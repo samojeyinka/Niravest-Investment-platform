@@ -38,6 +38,13 @@
     right: 5%;
 }
 
+@media screen and (max-width:1000px){
+    .showcase_img_box{
+        width: 100%;
+        height:auto;
+    }
+}
+
 
 @media screen and (max-width:700px){
 
