@@ -1,5 +1,6 @@
 import React from 'react'
 import {showCaseImg,bg,shape3, path4} from '../assets/assets'
+import '../stylesheets/Showcase.css'
 
 const showCase = () => {
   return (

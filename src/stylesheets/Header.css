@@ -1,0 +1,60 @@
+header{
+    width: 100%;
+    height: 4rem;
+    background: inherit;
+}
+
+.navbar{
+    margin: auto;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar_left{
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+}
+
+.logo_img{
+    width: 1.8em;
+}
+
+.logo_txt{
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--tertiary-color);
+}
+
+.menu_links{
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.menu_links li a{
+    font-size: 1.02rem;
+    font-weight: 400;
+    color: var(--tertiary-color);
+}
+
+.navbar_right button{
+    margin-top: 1rem;
+    padding: .7rem 1rem;
+    font-size: 1.02rem;
+    font-weight: 400;
+    background: var(--secondary-color);
+    color:var(--tertiary-color) ;
+    border-radius: var(--border-radius);
+}
+
+
+@media screen and (max-width:700px){
+    header{
+        display: none;
+    }
+}

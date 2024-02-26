@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { playCircle,path1, shape1, path2, bg, path3, shape2 } from '../assets/assets'
+import '../stylesheets/Hero.css'
 
 const Hero = () => {
   return (
