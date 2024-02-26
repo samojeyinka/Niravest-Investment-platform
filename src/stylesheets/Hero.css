@@ -147,6 +147,22 @@ The scattered images */
     opacity: .5;
 }
 
+@media screen and (max-width:1000px){
+    .hero_flex{
+        width: 90%;   
+    }
+
+    .hero_flex h1{
+        width: 70%;
+    }
+    
+    .hero_flex p{
+        margin: auto;
+        width: 85%;
+    }
+}
+   
+
 
 @media screen and (max-width:700px){
     .hero_flex{
