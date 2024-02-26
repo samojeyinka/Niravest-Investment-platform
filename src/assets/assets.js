@@ -9,6 +9,7 @@ import shape2 from './shape1.png';
 import showCaseImg from './showcaseimg.png';
 import shape3 from './shape3.png';
 import path4 from './Path4.png';
+import downAngle from './downangle.svg';
 
 
 export{
@@ -23,4 +24,5 @@ export{
      showCaseImg,
      shape3,
      path4, //The path
+     downAngle
 }

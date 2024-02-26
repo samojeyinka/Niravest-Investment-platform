@@ -20,14 +20,20 @@
 
 body{
     width: 100%;
-    background: var(--primary-color);
+    background: var(--primary-color) !important;
     font-family: "Poppins", sans-serif;
+}
+
+a{
+    text-decoration: none !important;
 }
 
 
 .App{
     width: 100%;
 }
+
+
 
 
 

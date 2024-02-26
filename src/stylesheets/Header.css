@@ -39,9 +39,18 @@ header{
 .menu_links li a{
     font-size: 1.02rem;
     font-weight: 400;
-    color: var(--tertiary-color);
+    color: var(--tertiary-color); 
 }
 
+.account_link{
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+.account_link img{
+    margin-top: .3rem;
+    width: 1rem;
+}
 .navbar_right button{
     margin-top: 1rem;
     padding: .7rem 1rem;
@@ -53,8 +62,77 @@ header{
 }
 
 
+
+
+
+/* dropdown */
+
+.dropdown-menu{
+    padding: .3rem;
+    width: 5rem;
+    height: fit-content;
+    background: var(--secondary-color);
+    position: absolute;
+    top: 4rem;
+    right: 30%;
+    border-radius: var(--border-radius-md);
+    box-shadow: 5px 6px var(--primary-color-md);
+
+}
+.opendropdown{
+    display: block;
+}
+
+.closedropdown{
+    display: none;
+}
+
+.dp_links{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    color: var(--tertiary-color);
+}
+
+.dp_links li{
+  
+    padding: .5rem .2rem;
+    width: 100%;
+    border-radius: var(--border-radius-md);
+}
+.dp_links li a{
+    font-weight: 500;
+}
+
+.dp_links li:hover {
+    background: var(--tertiary-color);
+    transition:.5s ease-in-out;
+
+}
+
+.dp_links li:hover a {
+    color: var(--primary-color);
+
+}
+
 @media screen and (max-width:700px){
-    header{
+    .navbar_right{
         display: none;
+    }
+
+    .navbar_middle{
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 4rem;
+        left: 0;
+        background: var(--secondary-color);
+        z-index: 2;
+        border-radius: var(--border-radius-md);
+    }
+    .menu_links{
+        padding-bottom: 2rem;
+        flex-direction: column;
     }
 }
