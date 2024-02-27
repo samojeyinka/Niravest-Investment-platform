@@ -42,7 +42,7 @@ const Header = () => {
             </div>
 
             <div className='hamburger' onClick={handleClick}>
-
+            <div className={`blur ${click ? 'active' : ''}`}></div>
 
             <div className={click ? 'bars-div open bar1 open bar2 open bar3' : 'bars-div'}>
               <div className='bar1'></div>
