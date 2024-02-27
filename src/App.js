@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Pros from './components/Pros';
 import ShowCase from './components/ShowCase';
 import Why from './components/Why';
+import Features from './components/Features';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
     <ShowCase/>
     <Pros/>
     <Why/>
+    <Features/>
     </div>
   );
 }

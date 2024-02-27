@@ -23,7 +23,9 @@ import line3 from './line3.png';
 import wallet from './wallet-check.png';
 import judge from './judge.svg';
 import chart from './chart.svg';
-
+import button from './Button.png';
+import smartphone from './smartphone.png';
+import mcur from './mcur.png';
 
 export{
      logo, //The platform logo
@@ -51,4 +53,7 @@ export{
      wallet,
      judge,
      chart,
+     button,
+     smartphone,
+     mcur
 }
