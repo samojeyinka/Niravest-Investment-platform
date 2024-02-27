@@ -47,9 +47,15 @@ header{
     align-items: center;
     gap: .3rem;
 }
+
+
 .account_link img{
     margin-top: .3rem;
     width: 1rem;
+}
+
+.mobile-only-link{
+    display: none;
 }
 .navbar_right button{
     margin-top: 1rem;
@@ -121,18 +127,88 @@ header{
         display: none;
     }
 
+
     .navbar_middle{
         position: absolute;
         width: 100%;
-        height: auto;
+        height: 0px;
         top: 4rem;
         left: 0;
         background: var(--secondary-color);
         z-index: 2;
         border-radius: var(--border-radius-md);
+        overflow: hidden;
+
     }
+
+    .navbar_middle.active{
+        height: 15rem;
+        transition: .2s ease-in-out;
+    }
+
+   
     .menu_links{
         padding-bottom: 2rem;
         flex-direction: column;
     }
+
+       
+    .menu_links  li:hover {
+        transform: scale(1.1);
+        transition: .3s ease-in-out;
+    }
+
+    .account_link{
+        display: none;
+    }
+
+    .mobile-only-link{
+        display: initial;
+    }
+
+    .hamburger{
+        display:block;
+        padding-top: .4rem;
+        cursor: pointer;
+        
+    }
+
+    .bars-div div{
+        width: 26px;
+        height: 3px;
+        margin: 6px 0;
+        transition: .5s;
+        background: var(--tertiary-color);
+       
+    }
+
+    
+    .open .bar1{
+        
+        -webkit-transform: rotate(-45deg) translate(-6px,6px);
+        transform:rotate(-45deg) translate(-6px,6px);
+        transition: .5s;
+    }
+
+   
+
+  
+
+    .open .bar2{
+       opacity: 0;
+    }
+
+ 
+
+    .open .bar3{
+        
+        -webkit-transform: rotate(45deg) translate(-6px,-8px);
+        transform:rotate(45deg) translate(-6px,-8px);
+        transition: .5s;
+    }
+
+   
+
+   
+    
 }
