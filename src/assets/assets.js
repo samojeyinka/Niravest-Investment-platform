@@ -16,6 +16,13 @@ import tickSquare from './TickSquare.png';
 import game from './Game.png';
 import circle1 from './circle1.png';
 import circle2 from './circle2.png';
+import menu from './menu.png';
+import line from './line.png';
+import line2 from './line2.png';
+import line3 from './line3.png';
+import wallet from './wallet-check.png';
+import judge from './judge.svg';
+import chart from './chart.svg';
 
 
 export{
@@ -36,5 +43,12 @@ export{
      tickSquare, //
      game,
      circle1,
-     circle2
+     circle2,
+     menu,
+     line,
+     line2,
+     line3,
+     wallet,
+     judge,
+     chart,
 }
