@@ -10,6 +10,10 @@ import showCaseImg from './showcaseimg.png';
 import shape3 from './shape3.png';
 import path4 from './Path4.png';
 import downAngle from './downangle.svg';
+import divider from './divider.png';
+import shield from './Shield.png';
+import tickSquare from './TickSquare.png';
+import game from './Game.png';
 
 
 export{
@@ -24,5 +28,9 @@ export{
      showCaseImg,
      shape3,
      path4, //The path
-     downAngle
+     downAngle,
+     divider, //
+     shield,
+     tickSquare, //
+     game
 }
