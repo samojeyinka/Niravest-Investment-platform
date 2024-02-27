@@ -14,6 +14,8 @@ import divider from './divider.png';
 import shield from './Shield.png';
 import tickSquare from './TickSquare.png';
 import game from './Game.png';
+import circle1 from './circle1.png';
+import circle2 from './circle2.png';
 
 
 export{
@@ -32,5 +34,7 @@ export{
      divider, //
      shield,
      tickSquare, //
-     game
+     game,
+     circle1,
+     circle2
 }

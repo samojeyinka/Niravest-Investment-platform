@@ -1,5 +1,6 @@
 import React from 'react';
-import { divider, game, shield, tickSquare } from '../assets/assets';
+import { circle1, circle2, divider, game, shield, tickSquare } from '../assets/assets';
+import '../stylesheets/Pros.css'
 
 const Pros = () => {
 
@@ -26,7 +27,8 @@ const Pros = () => {
         },
     ]
     return (
-        <section className='pros'>
+        <section className='pros_section'>
+        <div className='pros'>
             <div className='pros_flex'>
                 <div className='pros_top'>
                     <h2>Our Best Services
@@ -51,6 +53,13 @@ const Pros = () => {
 
                 </div>
             </div>
+
+            <div className='scattered'>
+    <img src={circle1} className='circleone'/>
+    <img src={circle2} className='circletwo'/>
+
+</div>
+        </div>
         </section>
     )
 }
