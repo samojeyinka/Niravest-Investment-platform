@@ -31,6 +31,9 @@ import layers from './layers.png';
 import star from './Star.png';
 import graph from './graph.png';
 import platform from './platform.png';
+import pro1 from './pro1.png';
+import pro2 from './pro2.png';
+import pro3 from './pro3.png';
 
 export{
      logo, //The platform logo
@@ -66,5 +69,7 @@ export{
      star,
      graph,
      platform,
-
+     pro1,
+     pro2,
+     pro3
 }

@@ -7,6 +7,7 @@ import Why from './components/Why';
 import Features from './components/Features';
 import Attributes from './components/Attributes';
 import Faq from './components/Faq';
+import Reviews from './components/Reviews';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
     <Features/>
     <Attributes/>
     <Faq/>
+    <Reviews/>
     </div>
   );
 }

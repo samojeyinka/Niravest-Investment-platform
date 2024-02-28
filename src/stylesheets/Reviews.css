@@ -1,0 +1,169 @@
+.review-sec{
+    padding: 2rem 0;
+    width: 100%;
+    max-width: 1920px;
+    background-image: url('../assets//Rectangle.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.review-con{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+
+.review-con img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+
+.rev-left,.rev-right{
+    width: 50%;
+    color: var(--tertiary-color);
+}
+
+
+
+.rev-left h1{
+    font-size: 2.5rem;
+    font-weight: 500;
+    padding: rem 0;
+}
+
+.rev-left h1,.rev-left h3,.rev-left p{
+    max-width: 70%;
+}
+
+.rev-left h3{
+    font-size: 1.2rem;
+}
+
+.rev-left h3,.rev-left p{
+    padding: 0 0 1rem 0;
+}
+
+
+.profile-pics-flex{
+    padding: 1.3rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.rev-left h4{
+    font-size: 1rem;
+}
+
+
+.rev-left h4 span{
+    color: var(--secondary-color);
+}
+
+.rev-right{
+    overflow: hidden;
+}
+
+.rev-con{
+    overflow: hidden;
+    border-radius: 1.2rem;
+    
+}
+
+.rev-carousel{
+    display: flex;
+    gap: 1.3rem;
+    
+}
+
+.rev-box{
+    min-width: 93%;
+    background: var(--secondary-color);
+    padding: .4rem 2rem .4rem 2rem;
+    position: relative;
+    cursor: grab;
+    
+}
+
+.rev-box::after{
+    content: '';
+    height: 100%;
+    width: .8rem;
+    background:var(--primary-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.rev-box h2{
+    color: var(--tertiary-color);
+    padding: 1rem 0 0 0 ;
+    font-size: 1.3rem;
+    opacity: .9;
+}
+
+
+.bottom-flex{
+    padding: 2rem 0 0 0 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--tertiary-color);
+}
+
+
+.profile-det{
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    
+}
+
+.profile-det h4{
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.profile-det p{
+    font-size: .9rem;
+}
+
+
+
+@media screen and (max-width:1040px){
+    .review-con{
+        flex-direction: column;
+    }
+
+    .rev-left,.rev-right{
+        width: 100%;
+    }
+
+    
+.rev-left h1{
+    font-size: 2.3rem;
+    
+}
+
+}
+
+
+@media screen and (max-width:800px){
+    .rev-left h1{
+        font-size: 1.8rem;
+        
+    }
+    .rev-left h1,.rev-left h3,.rev-left p{
+        max-width: 100%;
+    }
+
+    
+    
+}
