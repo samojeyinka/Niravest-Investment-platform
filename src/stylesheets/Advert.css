@@ -1,0 +1,64 @@
+.adver-sec{
+    padding: 2rem 0;
+    width: 100%;
+    background: #000;
+}
+
+
+.advert-con{
+    width: 95%;
+    max-width: 1920px;
+    margin: auto;
+}
+
+
+.advert-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.ad-details h2{
+    padding: 0 0 1rem 0;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+
+.advert-flex button{
+    padding: .8rem 2rem;
+    background: #fff;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.advert-flex button a{
+    color: #000;
+}
+
+.advert-flex button:hover{
+    background: var(--secondary-color);
+    
+}
+
+
+.advert-flex button:hover a{
+    color: #fff;
+}
+
+
+
+@media screen and (max-width:1040px){
+    .advert-flex{
+        flex-direction: column;
+        gap: 2rem;
+        align-items: baseline;
+    }
+
+    .ad-details h2{
+        padding: 0 0 1rem 0;
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+}
