@@ -1,5 +1,6 @@
 import React from 'react';
 import { divider, platform } from '../assets/assets'
+import '../stylesheets/Attributes.css';
 
 const Attributes = () => {
     return (

@@ -6,6 +6,7 @@ import ShowCase from './components/ShowCase';
 import Why from './components/Why';
 import Features from './components/Features';
 import Attributes from './components/Attributes';
+import Faq from './components/Faq';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
     <Why/>
     <Features/>
     <Attributes/>
+    <Faq/>
     </div>
   );
 }

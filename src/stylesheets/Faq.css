@@ -1,0 +1,137 @@
+.faq-section{
+    margin: auto;
+    padding: 2rem 0;
+    width: 70%;
+  
+    
+}
+
+
+.faq-container{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+
+}
+
+
+.faq-container .faq-intro  h1{
+    color: var(--tertiary-color);
+}
+
+.faq-container .faq-intro{
+    padding-bottom: 2rem;
+}
+
+
+.faq-container .faq-intro p{
+    text-align: center;
+    max-width: 50%;
+    margin: auto;
+    color: var(--tertiary-color);
+    opacity: .9;
+} 
+
+.faq-boxes{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    width: 100%;
+    margin: auto;
+    color: var(--tertiary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-box{
+    position: relative;
+    padding: .5rem 0;
+}
+
+.faq-box::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: var(--tertiary-color);
+    opacity: .7;
+}
+
+.faq_question{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    text-align: left;
+    padding: 0 2rem 0 2rem;
+}
+
+.faq_question p{
+    color: var(--tertiary-color);
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+
+.faq_answer{
+    width: 100%;
+    max-height: 0px;
+    overflow: hidden;
+    transition: .5s;
+    cursor: pointer;
+    
+}
+
+.faq_answer p{
+    text-align: left;
+    padding: 2rem;
+    color: var(--tertiary-color);
+    font-size: 1rem;
+    opacity: .8;
+}
+
+
+.active-answer{
+    max-height: 20rem;
+    
+}
+
+
+.active-question{
+    color: var(--tertiary-color);
+    transition: .4s;
+}
+
+
+@media screen and (max-width:800px){
+    .faq-section{
+        width: 95%;
+    }
+    
+
+    .faq-container .faq-intro p{
+        max-width: 100%;   
+    } 
+
+    .faq-boxes{
+        width: 100%;
+    }
+
+    .faq_question p{
+        font-size: 1rem; 
+    }
+    
+    .faq_question{
+        padding: 0 1rem 0 1rem;
+    }
+
+    .faq_answer p{
+        padding: 1rem;
+    }
+    
+
+}
