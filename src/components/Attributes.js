@@ -12,7 +12,7 @@ const Attributes = () => {
                     <img src={divider} />
                     <h5>Register and activate your first investent package</h5>
                     <p>Begin Your Investment Journey: Register and Activate Your First Investment Package Today for a Secure Financial Future.</p>
-                        <h5 className='add_line'>Manage your dashbaord easily</h5>
+                        <h5 className='add_line'>Manage your dashboard easily</h5>
                         <h5 className='add_line'>Start Investing</h5>
                 </div>
                 <div className='attributes_right'>
