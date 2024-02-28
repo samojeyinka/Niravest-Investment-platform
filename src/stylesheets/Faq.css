@@ -16,6 +16,8 @@
 
 
 .faq-container .faq-intro  h1{
+    font-weight: 500;
+    font-size: 2rem;
     color: var(--tertiary-color);
 }
 
@@ -73,6 +75,7 @@
 .faq_question p{
     color: var(--tertiary-color);
     font-size: 1.1rem;
+    font-weight: 500;
     text-align: left;
 }
 
