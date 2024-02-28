@@ -34,6 +34,8 @@ import platform from './platform.png';
 import pro1 from './pro1.png';
 import pro2 from './pro2.png';
 import pro3 from './pro3.png';
+import playstore from './playstore.png';
+import appstore from './appstore.png';
 
 export{
      logo, //The platform logo
@@ -71,5 +73,7 @@ export{
      platform,
      pro1,
      pro2,
-     pro3
+     pro3,
+     playstore,
+     appstore,
 }

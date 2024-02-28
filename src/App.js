@@ -9,6 +9,7 @@ import Attributes from './components/Attributes';
 import Faq from './components/Faq';
 import Reviews from './components/Reviews';
 import Advert from './components/Advert';
+import Download from './components/Download';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
     <Faq/>
     <Reviews/>
     <Advert/>
+    <Download/>
     </div>
   );
 }
