@@ -26,6 +26,10 @@ import chart from './chart.svg';
 import button from './Button.png';
 import smartphone from './smartphone.png';
 import mcur from './mcur.png';
+import phoneFrame from './phone.png';
+import layers from './layers.png';
+import star from './Star.png';
+import graph from './graph.png';
 
 export{
      logo, //The platform logo
@@ -55,5 +59,9 @@ export{
      chart,
      button,
      smartphone,
-     mcur
+     mcur,
+     phoneFrame,
+     layers,
+     star,
+     graph,
 }
