@@ -1,5 +1,6 @@
 import React from 'react'
 import { button, graph, layers, mcur, phoneFrame, smartphone, star } from '../assets/assets'
+import '../stylesheets/Features.css'
 
 const Features = () => {
   return (

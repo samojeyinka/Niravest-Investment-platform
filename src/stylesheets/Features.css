@@ -1,0 +1,142 @@
+
+
+.features{
+    width: 100%;
+    padding: 2rem;
+    height:100%;
+    background-image: url('../assets//Rectangle.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.features_flex{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.feature_box{
+    padding: .1rem;
+    margin: auto;
+    width: 70%;
+    height: fit-content;
+    background: var(--primary-color-md);
+    display: flex;
+    gap: 2rem;
+    border-radius: var(--border-radius-md);
+    color: var(--tertiary-color);
+    overflow: hidden;
+}
+
+.feature_box .left{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+
+.feature_box .left,.feature_box .right{
+    width: 50%;
+}
+
+.feature_box .left .f_icon_box{
+    padding: .5rem;
+    width: fit-content;
+    background: #0A3919;
+    border-radius: 50%;
+}
+.feature_box .left .f_icon_box img{
+    width: 1.1rem;
+}
+.feature_box .left h4{
+    width: 70%;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.feature_box .left p{
+    width: 90%;
+    font-size: .95rem;
+    font-weight: 400;
+}
+
+.feature_box .left img{
+    width: 2rem;
+}
+
+.feature_box .right .mcur_box{
+    margin: auto;
+    width: 23rem;
+    height: 23rem;
+    position: relative;
+}
+
+
+.feature_box .right .mcur_box img{
+    width:100%;
+    height: 100%;
+}
+
+.feature_box .right .mcur_box img:last-child{
+    height:80%;
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+
+@media  screen and (max-width:1000px) {
+    .feature_box{
+        width: 100%;
+    }
+}
+
+@media  screen and (max-width:700px) {
+
+    .features_flex{
+        gap: 2rem;
+    }
+    .feature_box .left,.feature_box .right{
+        width: 100%;
+    }
+    .feature_box{
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .feature_box.second{
+        flex-direction: column-reverse;
+    }
+
+    .feature_box .left h4{
+        width: 100%;
+    }
+    
+    .feature_box .left p{
+        width: 100%;
+    }
+
+    .feature_box .right {
+        overflow: hidden;
+    }
+
+    .feature_box .right .mcur_box{
+        margin: auto;
+        width: 20rem;
+        height: auto;
+        
+    }
+    
+    .feature_box .right .mcur_box img{
+        width:100%;
+        height: 100%;
+    }
+    .feature_box .right .mcur_box img:last-child{
+        position:relative;
+    }
+}
+    

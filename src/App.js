@@ -5,6 +5,7 @@ import Pros from './components/Pros';
 import ShowCase from './components/ShowCase';
 import Why from './components/Why';
 import Features from './components/Features';
+import Attributes from './components/Attributes';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     <Pros/>
     <Why/>
     <Features/>
+    <Attributes/>
     </div>
   );
 }

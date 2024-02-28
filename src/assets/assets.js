@@ -30,6 +30,7 @@ import phoneFrame from './phone.png';
 import layers from './layers.png';
 import star from './Star.png';
 import graph from './graph.png';
+import platform from './platform.png';
 
 export{
      logo, //The platform logo
@@ -64,4 +65,6 @@ export{
      layers,
      star,
      graph,
+     platform,
+
 }
