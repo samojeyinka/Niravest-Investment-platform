@@ -114,6 +114,10 @@
     .faq-section{
         width: 95%;
     }
+
+    .faq-container .faq-intro  h1{
+        padding-bottom: 1rem;
+    }
     
 
     .faq-container .faq-intro p{

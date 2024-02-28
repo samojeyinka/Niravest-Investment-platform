@@ -157,6 +157,7 @@
 
 @media screen and (max-width:800px){
     .rev-left h1{
+        padding-bottom:1rem ;
         font-size: 1.8rem;
         
     }
