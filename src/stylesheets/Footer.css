@@ -1,0 +1,178 @@
+.footer-sec{
+    padding: 3rem 0;
+}
+
+
+.footer-con{
+    width: 95%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+   border-bottom: 1px solid var(--tertiary-color);
+    color: var(--tertiary-color);
+}
+
+
+
+
+.f-logo-flex{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.f-logo-flex img{
+    width: 2rem;
+}
+
+
+.f-logo-text{
+    font-size: 2rem;
+    font-weight: 800;
+    opacity: .8;
+}
+
+.footer-left h2{
+    font-size: 1.5rem;
+    padding: 1rem 0;
+}
+
+.footer-left p{
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: .3rem 0;
+}
+.footer-middle{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.products h5, 
+.services h5{
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.footer-middle ul{
+    padding: 1rem 0;
+}
+
+.footer-middle ul li{
+    padding: .4rem 0;
+}
+
+.footer-middle ul li a{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.footer-middle ul li a:hover{
+color: var(--primary-color);
+}
+
+
+.footer-right{
+    padding: 0 0rem 0 3rem;
+    
+}
+
+.footer-right h2{
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+
+.footer-right p{
+    padding: 1rem 0;
+    font-weight: 500;
+}
+
+
+.f-form{
+    margin: 1rem 0;
+    display: flex;
+    background:#fff;
+    padding: .1rem;
+    justify-content: space-between;
+    border-radius: 2rem;
+    overflow: hidden;
+    border: 2px solid  #e3e3e4;
+}
+
+.f-form input{
+    width: 70%;
+    border-radius: 2rem;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.f-form button{
+    width: 30%;
+    background: var(--primary-color);
+    border-radius: 2rem;
+    font-weight: 800;
+    color: #fff;
+    font-size: 1srem;
+}
+
+.f-form input, .f-form button{
+    padding: .7rem;   
+}
+
+.f-form input::placeholder{
+    color: #676161;
+    font-weight: 600;
+}
+
+
+.f-links{
+    padding: 1rem 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.f-links a{
+    font-size: 1.4rem;
+}
+
+
+
+.f_social_icon:hover{
+color: var(--primary-color);
+}
+
+
+.copyRight{
+    padding-top: 1rem;
+    text-align: center;
+}
+
+@media screen and (max-width:1040px){
+    .footer-con{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-left{
+        margin: auto;
+        padding: 0 0 2rem 0;
+       
+        
+    }
+
+    .f-links{
+        justify-content: center;
+    }
+}
+
+
+@media screen and (max-width:800px){
+    .footer-con{
+        grid-template-columns: 1fr;
+    }
+    
+}
