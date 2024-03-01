@@ -1,32 +1,19 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Pros from './components/Pros';
-import ShowCase from './components/ShowCase';
-import Why from './components/Why';
-import Features from './components/Features';
-import Attributes from './components/Attributes';
-import Faq from './components/Faq';
-import Reviews from './components/Reviews';
-import Advert from './components/Advert';
-import Download from './components/Download';
 import Footer from './components/Footer';
+import Home from './routes/Home.js';
+import SignUp from './routes/SignUp.js';
 
 function App() {
   return (
     <div className="App">
-    <Header/>
-    <Hero/>
-    <ShowCase/>
-    <Pros/>
-    <Why/>
-    <Features/>
-    <Attributes/>
-    <Faq/>
-    <Reviews/>
-    <Advert/>
-    <Download/>
-    <Footer/>
+      <Header />
+      <Routes>
+        <Route path='/' exact element={<Home />} />
+        <Route path='/signup' element={<SignUp />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,124 @@
+.login-sec{
+    padding: 2rem 0;
+    width: 100%;
+}
+
+
+.login-con{
+    width: 95%;
+    max-width: 1920px;
+    margin: auto;
+}
+
+
+.login-con h1{
+    color: var(--tertiary-color);
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 2.6rem;
+    font-weight: 600;
+}
+
+.login-con p{
+    padding: 0 0 1rem 0;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--tertiary-color);
+}
+
+.signin-link{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    gap: 2rem;
+    padding: .5rem;
+    background:var(--primary-color-md);
+    width: fit-content;
+    border-radius: 2rem;
+    color: var(--tertiary-color);
+    
+}
+.signin-link small{
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+
+.signin-link small span{
+    color: #58bd7d;
+}
+
+
+
+.login-con form{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 2rem;
+}
+
+
+.login-con form input,.login-con button{
+    width: 100%;
+    outline: none;
+}
+
+
+
+.login-con form input{
+    border-radius: 1rem;
+    border: 1px solid rgba(194, 194, 194, 0.407);
+    padding: 1rem;
+}
+
+.login-con button{
+    background: var(--secondary-color);
+    border-radius: 2rem;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: .7rem;
+    font-weight: 800;
+}
+
+.login-con label{
+    color: var(--tertiary-color);
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.to-signup{
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto;
+}
+
+
+.to-signup p{
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+
+.to-signup a{
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+@media screen and (max-width:800px){
+
+    .login-con h1{
+        font-size: 1.7rem;
+    }
+
+    .login-con p{
+        font-size: 1.1rem;
+    }
+    .to-signup{
+        width: 100%; 
+    }
+
+    .login-con form{
+        width: 100%;
+    }
+}
