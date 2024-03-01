@@ -12,7 +12,7 @@ const Hero = () => {
             </p>
 
             <div className='action_btns'>
-                <Link><button>Get Started</button></Link>
+                <Link to={'/signup'}><button>Get Started</button></Link>
                 <Link>
                 <img src={playCircle}/>
                 <span>Watch Demo</span>

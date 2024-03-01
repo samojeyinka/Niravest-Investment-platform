@@ -1,11 +1,11 @@
 .login-sec{
-    padding: 2rem 0;
+    padding: 1rem 0;
     width: 100%;
 }
 
 
 .login-con{
-    width: 95%;
+    width: 85%;
     max-width: 1920px;
     margin: auto;
 }
@@ -13,7 +13,7 @@
 
 .login-con h1{
     color: var(--tertiary-color);
-    padding: 1rem 0;
+    padding: .6rem 0;
     text-align: center;
     font-size: 2.6rem;
     font-weight: 600;
@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     margin: auto;
-    gap: 2rem;
+    gap: 1rem;
     padding: .5rem;
     background:var(--primary-color-md);
     width: fit-content;
@@ -82,9 +82,10 @@
 }
 
 .login-con label{
+    margin:.3rem 0 ;
     color: var(--tertiary-color);
-    font-weight: 800;
-    font-size: 1.2rem;
+    font-weight: 500;
+    font-size: 1.1rem;
 }
 
 .to-signup{

@@ -15,6 +15,15 @@ const Header = () => {
         setClick(!click);
     }
 
+   const openPage = () => {
+    setClick(!click);
+   }
+
+
+   const closedropdown = () => {
+    setOpen(!open);
+   }
+
     let dropdown = useRef();
 
     useEffect(() => {
@@ -68,13 +77,13 @@ const Header = () => {
                 <div className={`navbar_middle ${click ? 'active' : ''}`}>
                     <ul className='menu_links'>
                         <li>
-                            <Link to={'/'}>
+                            <Link to={'/'} onClick={openPage}>
                                 Home
                             </Link>
                         </li>
 
                         <li>
-                            <Link to={'/'}>
+                            <Link to={'/'} onClick={openPage}>
                                 Service
                             </Link>
                         </li>
@@ -87,7 +96,7 @@ const Header = () => {
                         </li>
 
                         <li onClick={() => handleDropPackage('d1')} id='d1' className='mobile-packages-link'>
-                            <Link to={'/'}>
+                            <Link to={'/'} >
                                 Packages
                             </Link>
                             <i className='p-angle'>
@@ -96,21 +105,21 @@ const Header = () => {
                         </li>
 
                         <div className={`d-packages ${getPackages('d1')}`}>
-                            <li><Link to='/'>Basic Invest</Link> </li>
-                            <li><Link to='/'>Smart Invest</Link> </li>
-                            <li><Link to='/'>Pro Invest</Link> </li>
-                            <li><Link to='/'>Elite Invest</Link> </li>
-                            <li><Link to='/'>Prime Invest</Link> </li>
-                            <li><Link to='/'>Ultimate Invest</Link> </li>
+                            <li><Link to='/' onClick={openPage} >Basic Invest</Link> </li>
+                            <li><Link to='/' onClick={openPage}>Smart Invest</Link> </li>
+                            <li><Link to='/' onClick={openPage}>Pro Invest</Link> </li>
+                            <li><Link to='/' onClick={openPage}>Elite Invest</Link> </li>
+                            <li><Link to='/' onClick={openPage}>Prime Invest</Link> </li>
+                            <li><Link to='/' onClick={openPage}>Ultimate Invest</Link> </li>
                         </div>
 
                         <li className='mobile-only-link'>
-                            <Link to={'/'}>
+                            <Link to={'/signin'} onClick={openPage}>
                                 Sign In
                             </Link>
                         </li>
                         <li className='mobile-only-link'>
-                            <Link to={'/'}>
+                            <Link to={'/signup'} onClick={openPage}>
                                 Sign Up
                             </Link>
                         </li>
@@ -126,12 +135,12 @@ const Header = () => {
                         <div className={`dropdown-menu ${open ? 'opendropdown' : 'closedropdown'}`}>
                             <ul className='dp_links'>
                                 <li>
-                                    <Link to={'/'}>
+                                    <Link to={'/signin'} onClick={closedropdown}>
                                         Sign In
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to={'/'}>
+                                    <Link to={'/signup'} onClick={closedropdown}>
                                         Sign Up
                                     </Link>
                                 </li>
