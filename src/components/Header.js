@@ -125,9 +125,8 @@ const Header = () => {
                         </li>
 
                         <li onClick={() => { setOpen(!open) }} className='account_link'>
-                            <Link to={'/'}
-                            >
-                                <span>Account </span>
+                            <Link>
+                            Account
                             </Link>
 
                         </li>
