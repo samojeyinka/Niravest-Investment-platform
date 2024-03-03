@@ -1,11 +1,12 @@
-import { useRef, useState } from "react";
+import { useRef, useState,Na } from "react";
 import '../stylesheets/Sign.css'
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = ({ setCurrUser, setShow }) => {
-    
+    const navigate = useNavigate()
     const [showPasssword, setShowPassword] = useState(false);
     const [isValid, setIsValid] = useState();
     
@@ -36,11 +37,12 @@ const Signup = ({ setCurrUser, setShow }) => {
             if (response.status === 200) {
                 console.log('Sign up successful!!');
                 console.log(response)
-                const token = response.data.token;
+                const token = response.headers.get("Authorization");
+                console.log(token)
                 localStorage.setItem('token', token);
-                // const usernameidentifier = response.data.user.username;
-                // console.log(usernameidentifier)
-                // navigate(`/@${usernameidentifier}`);
+                const userId = response.data.data.id;
+                console.log(userId)
+                navigate(`/profile/${userId}`);
 
        } } catch (error) {
             console.error(error);   
