@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Signup = ({ setCurrUser, setShow }) => {
+const Signup = () => {
     const navigate = useNavigate()
     const [showPasssword, setShowPassword] = useState(false);
     const [isValid, setIsValid] = useState();
@@ -30,8 +30,8 @@ const Signup = ({ setCurrUser, setShow }) => {
 
  
     const handleSubmit = async(e) => {
+         e.preventDefault()
         try {
-            e.preventDefault()
             const response = await axios.post("http://localhost:3000/signup",{"user":formData})
         
             if (response.status === 200) {
@@ -53,7 +53,7 @@ const Signup = ({ setCurrUser, setShow }) => {
 
     const handleClick = e => {
         e.preventDefault()
-        setShow(true)
+
     }
 
     const handlePasswordVisibility = () => {
@@ -97,7 +97,7 @@ const Signup = ({ setCurrUser, setShow }) => {
             </form>
 
 
-            <p className='account-condition'>Already have an account?  <Link to={'/#signup'} onClick={handleClick} >Sign In</Link></p>
+            <p className='account-condition'>Already have an account?  <Link to={'/signin'}  >Sign In</Link></p>
         </main>
 
 

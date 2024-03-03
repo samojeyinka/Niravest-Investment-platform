@@ -4,8 +4,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './routes/Home.js';
 import { useState } from 'react';
-import Account from './routes/Account.js';
-import Login from './components/Login.js';
+import Signup from './routes/Signup.js';
+import Login from './routes/Login.js';
+
 
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
     
       <Routes>
         <Route path='/' exact element={<Home />} />
-        <Route path='/account' element={<Account />} />
+        <Route path='/signup' exact element={<Signup />} />
+        <Route path='/signin' exact element={<Login />} />
+        
 
   
       </Routes>
