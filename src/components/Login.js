@@ -53,13 +53,6 @@ const Login = ({ setCurrUser, setShow }) => {
       <main className='auth'>
         <h1>Hey there! <br /> Welcome Back</h1>
 
-        {/* <form ref={formRef} onSubmit={handleSubmit}>
-        Email: <input type="email" name='email' placeholder="email" />
-        <br/>
-        Password: <input type="password" name='password' placeholder="password" />
-        <br/>
-        <input type='submit' value="Login" />
-      </form> */}
         <form className='auth__form' ref={formRef} onSubmit={handleSubmit}>
           <div className='auth__input_box'>
             <label>Email</label>
