@@ -5,6 +5,7 @@
     --primary-color-md: #163D2A;
     --secondary-color: #2FB574;
     --tertiary-color: #FFFFFF;
+    --dark-color:#000;
     --border-radius: 3rem;
     --border-radius-md: .3rem;
 
@@ -29,6 +30,10 @@ a {
     text-decoration: none !important;
 }
 
+input{
+    border: none;
+    outline: none ;
+}
 
 .App {
     width: 100%;
