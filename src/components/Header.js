@@ -5,8 +5,6 @@ import '../stylesheets/Header.css'
 import {FaAngleDown} from 'react-icons/fa'
 
 const Header = () => {
-
-    const [open, setOpen] = useState(false);
     const [click, setClick] = useState(false);
     const [dropPackages, setDropPackages] = useState('d1');
 
@@ -20,28 +18,8 @@ const Header = () => {
    }
 
 
-   const closedropdown = () => {
-    setOpen(!open);
-   }
 
-    let dropdown = useRef();
-
-    useEffect(() => {
-        let handler = (e) => {
-            if (!dropdown.current.contains(e.target)) {
-                setOpen(false);
-                console.log(dropdown.current);
-            }
-        };
-
-        document.addEventListener("mousedown", handler);
-
-
-        return () => {
-            document.removeEventListener("mousedown", handler);
-        }
-
-    });
+    
 
     const handleDropPackage = (id) => {
         setDropPackages(dropPackages === id ? "" : id);
@@ -54,7 +32,7 @@ const Header = () => {
 
     return (
 
-        <header ref={dropdown}>
+        <header>
 
             <nav className='navbar'>
                 <div className='navbar_left'>
@@ -114,40 +92,18 @@ const Header = () => {
                         </div>
 
                         <li className='mobile-only-link'>
-                            <Link to={'/signin'} onClick={openPage}>
-                                Sign In
+                            <Link to={'/account'} onClick={openPage}>
+                                Account
                             </Link>
                         </li>
-                        <li className='mobile-only-link'>
-                            <Link to={'/signup'} onClick={openPage}>
-                                Sign Up
-                            </Link>
-                        </li>
+                    
 
-                        <li onClick={() => { setOpen(!open) }} className='account_link'>
-                            <Link>
+                        <li className='account_link'>
+                            <Link to={'/account'}>
                             Account
                             </Link>
 
                         </li>
-
-                        <div className={`dropdown-menu ${open ? 'opendropdown' : 'closedropdown'}`}>
-                            <ul className='dp_links'>
-                                <li>
-                                    <Link to={'/signin'} onClick={closedropdown}>
-                                        Sign In
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to={'/signup'} onClick={closedropdown}>
-                                        Sign Up
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-
-
-
 
                     </ul>
 

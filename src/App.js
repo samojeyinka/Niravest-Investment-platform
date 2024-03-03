@@ -4,19 +4,23 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './routes/Home.js';
 import { useState } from 'react';
-import User from './components/User.js';
+import Account from './routes/Account.js';
+import Login from './components/Login.js';
 
 
 function App() {
-  const [currUser, setCurrUser]=useState(null);
+
 
   return (
     <div className="App">
   
       <Header />
-      <User currUser={currUser} setCurrUser={setCurrUser} />
+    
       <Routes>
         <Route path='/' exact element={<Home />} />
+        <Route path='/account' element={<Account />} />
+        <Route path='/sigin'  element={<Login />} />
+
   
       </Routes>
       <Footer />

@@ -8,7 +8,7 @@ const User = ({currUser, setCurrUser}) => {
     if(currUser) 
         return (
             <div>
-            Hello {currUser.email}
+            Hello {currUser.data.email}
             <PrivateText currUser={currUser}/>
             <Logout setCurrUser={setCurrUser}/>
             </div>

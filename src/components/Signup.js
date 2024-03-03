@@ -30,10 +30,12 @@ const Signup=({setCurrUser, setShow})=>{
         signup(userInfo, setCurrUser)
         e.target.reset()
     }
+    
     const handleClick=e=>{
         e.preventDefault()
         setShow(true)
     }
+
     return(
         <div>
         <form ref={formRef} onSubmit={handleSubmit}>
