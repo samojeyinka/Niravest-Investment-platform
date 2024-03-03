@@ -1,40 +1,52 @@
 import { useRef, useState } from "react";
 import '../stylesheets/Sign.css'
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaCheck, FaTimes } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const Signup = ({ setCurrUser, setShow }) => {
+    
     const [showPasssword, setShowPassword] = useState(false);
+    const [isValid, setIsValid] = useState();
+    
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
 
-    const formRef = useRef()
-    const signup = async (userInfo, setCurrUser) => {
-        const url = "http://localhost:3000/signup"
-        try {
-            const response = await fetch(url, {
-                method: 'post',
-                headers: {
-                    "content-type": 'application/json',
-                    "accept": "application/json"
-                },
-                body: JSON.stringify(userInfo)
-            })
-            const data = await response.json()
-            if (!response.ok) throw data.error
-            localStorage.setItem('token', response.headers.get("Authorization"))
-            setCurrUser(data)
-        } catch (error) {
-            console.log("error", error)
+    const handleChange = (e) => {
+        e.preventDefault();
+        const inputValue = e.target.value;
+
+        if (e.target.name === 'email') {
+            const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            const isValidEmail = emailPattern.test(inputValue);
+            setIsValid(isValidEmail);
         }
+
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     }
-    const handleSubmit = e => {
-        e.preventDefault()
-        const formData = new FormData(formRef.current)
-        const data = Object.fromEntries(formData)
-        const userInfo = {
-            "user": { email: data.email, password: data.password }
+
+ 
+    const handleSubmit = async(e) => {
+        try {
+            e.preventDefault()
+            const response = await axios.post("http://localhost:3000/signup",{"user":formData})
+        
+            if (response.status === 200) {
+                console.log('Sign up successful!!');
+                console.log(response)
+                const token = response.data.token;
+                localStorage.setItem('token', token);
+                // const usernameidentifier = response.data.user.username;
+                // console.log(usernameidentifier)
+                // navigate(`/@${usernameidentifier}`);
+
+       } } catch (error) {
+            console.error(error);   
         }
-        signup(userInfo, setCurrUser)
-        e.target.reset()
+       
+        
     }
 
     const handleClick = e => {
@@ -47,23 +59,12 @@ const Signup = ({ setCurrUser, setShow }) => {
     }
 
     return (
-        //     <div>
-        //     <form ref={formRef} onSubmit={handleSubmit}>
-        //         Email: <input type="email" name='email' placeholder="email" />
-        //         <br/>
-        //         Password: <input type="password" name='password' placeholder="password" />
-        //         <br/>
-        //         <input type='submit' value="Submit" />
-        //     </form>
-        //     <br />
-        //     <div>Already registered, <a href="#login" onClick={handleClick} >Login</a> here.</div>
-        // </div>
 
         <main className='auth'>
             <h1>Hello!
                 <br /> Join Us Today</h1>
 
-            <form className='auth__form' ref={formRef} onSubmit={handleSubmit}>
+            <form className='auth__form' onSubmit={handleSubmit}>
                 <div className='auth__input_box'>
                     <label>Email</label>
                     <span>
@@ -71,7 +72,7 @@ const Signup = ({ setCurrUser, setShow }) => {
                         <input type='email'
                             name='email'
                             placeholder='Enter Your Email'
-
+                            onChange={handleChange}
                         />
                     </span>
                 </div>
@@ -83,7 +84,7 @@ const Signup = ({ setCurrUser, setShow }) => {
                         <input type={showPasssword ? 'text' : 'password'}
                             placeholder='Enter Your Password'
                             name='password'
-
+                            onChange={handleChange}
 
                         />
                         <i className='auth__icon' onClick={handlePasswordVisibility}>{showPasssword ? <FaEyeSlash /> : <FaEye />}</i>

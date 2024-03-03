@@ -11,6 +11,7 @@ import Login from './components/Login.js';
 function App() {
 
 
+
   return (
     <div className="App">
   
@@ -19,7 +20,6 @@ function App() {
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/account' element={<Account />} />
-        <Route path='/sigin'  element={<Login />} />
 
   
       </Routes>
