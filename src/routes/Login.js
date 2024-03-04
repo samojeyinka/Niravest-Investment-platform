@@ -4,7 +4,7 @@ import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaCheck, FaTimes } from 'react-i
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
- 
+import Cookies from 'js-cookie';
 
 const Login = () => {
 
@@ -42,7 +42,7 @@ const Login = () => {
              
               const token = response.headers.get("Authorization");
               console.log(token)
-              localStorage.setItem('token', token);
+              Cookies.set('token', token);
               const userId = response.data.data.id;
               console.log(userId)
               navigate(`/profile/${userId}`);

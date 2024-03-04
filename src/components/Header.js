@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { logo } from '../assets/assets'
 import { Link } from 'react-router-dom'
 import '../stylesheets/Header.css'
 import {FaAngleDown} from 'react-icons/fa'
+import Cookies from 'js-cookie';
 
 const Header = () => {
 
     const [open, setOpen] = useState(false);
     const [click, setClick] = useState(false);
     const [dropPackages, setDropPackages] = useState('d1');
-
+    const navigate = useNavigate();
 
     const handleClick = () => {
         setClick(!click);
@@ -50,6 +52,11 @@ const Header = () => {
     const getPackages = (id) => {
         return dropPackages === id ? "active-packages" : "";
         
+    }
+
+    const handleLogOut = () => {
+        Cookies.remove('token');
+        navigate('/');
     }
 
     return (
@@ -141,6 +148,12 @@ const Header = () => {
                                 <li>
                                     <Link to={'/signup'} onClick={closedropdown}>
                                         Sign Up
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link to={'/'} onClick={handleLogOut}>
+                                        logout
                                     </Link>
                                 </li>
                             </ul>

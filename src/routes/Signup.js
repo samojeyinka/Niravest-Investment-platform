@@ -1,9 +1,11 @@
-import { useRef, useState,Na } from "react";
+import { useRef, useState} from "react";
 import '../stylesheets/Sign.css'
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -39,7 +41,7 @@ const Signup = () => {
                 console.log(response)
                 const token = response.headers.get("Authorization");
                 console.log(token)
-                localStorage.setItem('token', token);
+                Cookies.set('token', token);
                 const userId = response.data.data.id;
                 console.log(userId)
                 navigate(`/profile/${userId}`);
