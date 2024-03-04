@@ -6,6 +6,8 @@ import '../stylesheets/Header.css'
 import {FaAngleDown} from 'react-icons/fa'
 import Cookies from 'js-cookie';
 
+
+
 const Header = () => {
 
     const [open, setOpen] = useState(false);
@@ -28,23 +30,24 @@ const Header = () => {
 
     let dropdown = useRef();
 
+
+
+
     useEffect(() => {
         let handler = (e) => {
-            if (!dropdown.current.contains(e.target)) {
+            if (dropdown.current && !dropdown.current.contains(e.target)) {
                 setOpen(false);
                 console.log(dropdown.current);
             }
         };
-
+    
         document.addEventListener("mousedown", handler);
-
-
+    
         return () => {
             document.removeEventListener("mousedown", handler);
-        }
-
-    });
-
+        };
+    }, []);
+    
     const handleDropPackage = (id) => {
         setDropPackages(dropPackages === id ? "" : id);
     }
@@ -54,13 +57,18 @@ const Header = () => {
         
     }
 
-    const handleLogOut = () => {
-        Cookies.remove('token');
-        navigate('/');
-    }
+
+
+    const isLoggedIn = Cookies.get('token');
 
     return (
-
+<section>
+{isLoggedIn ? (
+    <div>
+    <></>
+    </div>
+) :
+(
         <header ref={dropdown}>
 
             <nav className='navbar'>
@@ -151,11 +159,7 @@ const Header = () => {
                                     </Link>
                                 </li>
 
-                                <li>
-                                    <Link to={'/'} onClick={handleLogOut}>
-                                        logout
-                                    </Link>
-                                </li>
+                        
                             </ul>
                         </div>
 
@@ -172,6 +176,8 @@ const Header = () => {
 
 
         </header>
+)}
+        </section>
     )
 }
 

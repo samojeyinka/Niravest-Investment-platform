@@ -44,8 +44,9 @@ const Login = () => {
               console.log(token)
               Cookies.set('token', token);
               const userId = response.data.data.id;
+              Cookies.set('userId', userId);
               console.log(userId)
-              navigate(`/profile/${userId}`);
+              navigate(`/overview`);
 
       } catch (error) {
           console.error(error);   
