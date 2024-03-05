@@ -1,7 +1,7 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 import { Link,NavLink,useNavigate } from 'react-router-dom';
-import {FaHome,FaWallet,FaRegMoneyBillAlt,FaUser,FaSignOutAlt} from 'react-icons/fa'
+import {FaHome,FaWallet,FaRegMoneyBillAlt,FaUser,FaSignOutAlt,FaHeart} from 'react-icons/fa'
 import { logo } from '../assets/assets';
 
 const UserNav = () => {
@@ -36,6 +36,18 @@ const UserNav = () => {
                       </i>
                       <span>
                         Payment
+                      </span>
+                      </NavLink>
+                    </li>
+
+                    
+                    <li>
+                      <NavLink to={"/watchlist"}>
+                      <i className='umml-icon'>
+                        <FaHeart/>
+                      </i>
+                      <span>
+                      Watchlist 
                       </span>
                       </NavLink>
                     </li>

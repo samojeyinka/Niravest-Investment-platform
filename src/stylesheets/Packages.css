@@ -75,13 +75,46 @@
     font-size: 1.1rem;
     padding: .5rem 1rem;
     width: 100%;
-    background: var(--secondary-color);
+    background: rgb(88, 63, 15);
     border-radius: var(--border-radius-md);
   }
   
   .p-box-btm-right  button:hover {
-    background: var(--primary-color-md);
+    background: rgb(85, 58, 8);
     transition: .3s ease-in-out;
+  }
+
+  .p-btns{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+
+  .p-btns-activate{
+    background: var(--secondary-color) !important;
+  }
+
+  .p-btns-rm{
+  color: red !important;
+  cursor: pointer;
+  }
+
+  .empty-watchlist{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .empty-watchlist p{
+    text-align: center;
+    width: 50%;
+    color: var(--tertiary-color);
+    opacity: .8;
+  }
+  .empty-watchlist p a{
+    color:blue;
   }
 
   @media screen  and (max-width: 1000px) {

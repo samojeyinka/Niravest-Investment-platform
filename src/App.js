@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import Payment from './routes/Payment.js'
 import Packages from './routes/Packages.js';
 import Account from './routes/Account.js';
+import Watchlist  from './routes/Watchlist.js';
 function App() {
 
   return (
@@ -20,12 +21,13 @@ function App() {
     
       <Routes>
         <Route path='/' exact element={<Home />} />
-        <Route path='/signup' exact element={<Signup />} />
-        <Route path='/signin' exact element={<Login />} />
-        <Route path='/overview' exact element={<Overview />} />
-        <Route path='/Payment' exact element={<Payment />} />
-        <Route path='/Packages' exact element={<Packages />} />
-        <Route path='/account' exact element={<Account />} />
+        <Route path='/signup'  element={<Signup />} />
+        <Route path='/signin'  element={<Login />} />
+        <Route path='/overview'  element={<Overview />} />
+        <Route path='/payment'  element={<Payment />} />
+        <Route path='/watchlist'  element={<Watchlist  />} />
+        <Route path='/Packages'  element={<Packages />} />
+        <Route path='/account'  element={<Account />} />
       </Routes>
     </div>
   );

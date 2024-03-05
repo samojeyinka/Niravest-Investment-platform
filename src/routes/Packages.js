@@ -68,47 +68,53 @@ const Packages = () => {
           <UserNav />
           <main className='user-main'>
             <h2>Packages to Invest On</h2>
-            <div className='packages-grid'>
-              {packages.map((pkg) => (
-                <div className='package-box' key={pkg.id}>
-                  <div className='p-box-top'>
-                    <b>{capitalizeFirstLetter(pkg.name)}</b>
-                    <b>{pkg.duration}</b>
-                  </div>
-                  <div className='p-box-btm'>
-                    <div className='p-box-btm-left'>
-                      <div className='pbbl-img-box'>
-                        <img src={dmd} />
-                      </div>
-                    </div>
-                    <div className='p-box-btm-right'>
-                      <div className='p-box-btm-right-details'>
-                        <div className='p-box-details-left'>
-                          <b>Daily Profits</b>
-                          <b>Total Profits</b>
-                          <b className='p-price'>Price</b>
-                        </div>
-                        <div className='p-box-details-right'>
-                          <b>₦{pkg.daily_profits}</b>
-                          <b>₦{pkg.total_profits}</b>
-                          <b className='p-price'>₦{pkg.price}</b>
+            {packages.length === 0 ? (<div className='empty-watchlist'>
 
+              <p>Sorry! There are no packages to invest in at the moment.</p>
+            </div>) :
+              (<div className='packages-grid'>
+                {packages.map((pkg) => (
+                  <div className='package-box' key={pkg.id}>
+                    <div className='p-box-top'>
+                      <b>{capitalizeFirstLetter(pkg.name)}</b>
+                      <b>{pkg.duration}</b>
+                    </div>
+                    <div className='p-box-btm'>
+                      <div className='p-box-btm-left'>
+                        <div className='pbbl-img-box'>
+                          <img src={dmd} />
                         </div>
                       </div>
+                      <div className='p-box-btm-right'>
+                        <div className='p-box-btm-right-details'>
+                          <div className='p-box-details-left'>
+                            <b>Daily Profits</b>
+                            <b>Total Profits</b>
+                            <b className='p-price'>Price</b>
+                          </div>
+                          <div className='p-box-details-right'>
+                            <b>₦{pkg.daily_profits}</b>
+                            <b>₦{pkg.total_profits}</b>
+                            <b className='p-price'>₦{pkg.price}</b>
 
-                      <button onClick={() => handleAddPackage(pkg.id)}>Add to Watchlist</button>
+                          </div>
+                        </div>
+
+                        <button onClick={() => handleAddPackage(pkg.id)}>Add to Watchlist</button>
+
+                      </div>
 
                     </div>
 
                   </div>
 
-                </div>
 
 
+                ))
+                }
+              </div>)
 
-              ))
-              }
-            </div>
+            }
           </main>
         </section>
         :
