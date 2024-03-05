@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './routes/Home.js';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Signup from './routes/Signup.js';
 import Login from './routes/Login.js';
 import Overview from './routes/Overview.js';
@@ -13,7 +13,6 @@ import Packages from './routes/Packages.js';
 import Account from './routes/Account.js';
 function App() {
 
-  const isLoggedIn = Cookies.get('token');
   return (
     
     <div className="App">
@@ -28,11 +27,6 @@ function App() {
         <Route path='/Packages' exact element={<Packages />} />
         <Route path='/account' exact element={<Account />} />
       </Routes>
-      {isLoggedIn ? 
-      <div></div>
-      :
-      <Footer />
-}
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import Footer from "../components/Footer";
 
 const Login = () => {
 
@@ -104,6 +105,7 @@ const Login = () => {
 
         <p className='account-condition'>Don't have an account? <Link to={'/signup'}>Sign up</Link></p>
       </main>
+      <Footer/>
     </>
   )
 }

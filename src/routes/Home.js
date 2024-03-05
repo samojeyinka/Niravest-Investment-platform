@@ -9,6 +9,7 @@ import Faq from '../components/Faq';
 import Reviews from '../components/Reviews';
 import Advert from '../components/Advert';
 import Download from '../components/Download';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
     <Reviews/>
     <Advert/>
     <Download/>
+    <Footer/>
     </React.Fragment>
   )
 }

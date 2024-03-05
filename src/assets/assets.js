@@ -36,6 +36,7 @@ import pro2 from './pro2.png';
 import pro3 from './pro3.png';
 import playstore from './playstore.png';
 import appstore from './appstore.png';
+import dmd from './dmd.png';
 
 export{
      logo, //The platform logo
@@ -76,4 +77,5 @@ export{
      pro3,
      playstore,
      appstore,
+     dmd
 }
