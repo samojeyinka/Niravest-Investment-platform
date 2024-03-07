@@ -5,7 +5,7 @@ import axios from 'axios';
 import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
-import {FaTrash} from 'react-icons/fa'
+import {FaTrash} from 'react-icons/fa';
 
 const Watchlist = () => {
 
@@ -60,6 +60,29 @@ try {
   
   }
     
+
+  //Activate - Work by updating the package activeness to true
+
+  const activatePackage = async(packageeId) => {
+    try {
+      const token = Cookies.get('token');
+      await axios.patch(
+        `http://localhost:3000/users/${userId}/packages/${packageeId}/edit`,
+        {},
+        {
+          headers: {
+            Authorization: `${token}` // Correct way to pass the token
+          }
+        }
+      );
+  
+      console.log('Package activated successfully');
+      showPackages();
+    } catch (error) {
+      console.error('Error activating package: ', error);
+    }
+  }
+  
      
 
   useEffect(() => {
@@ -107,7 +130,7 @@ try {
 
                       {/* <button onClick={() => handleAddPackage(pkg.id)}>Add to Watchlist</button> */}
                       <div className='p-btns'>
-                      <button className='p-btns-activate'>Activate</button>
+                      <button onClick={() => activatePackage(pkg.id)} className='p-btns-activate'>Activate</button>
                       <i onClick={() => handleRemovePackage(pkg.id)}  className='p-btns-rm' title='Remove'><FaTrash/></i>
                       </div>
                       

@@ -5,6 +5,8 @@ import axios from 'axios';
 import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
+import PaystackHookExample from '../components/PayStackHook';
+
 
 const Packages = () => {
 
@@ -39,7 +41,6 @@ const Packages = () => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-
   const handleAddPackage = (packageId) => {
     // Send a POST request to associate the package with the user
     const token = Cookies.get('token');
@@ -57,6 +58,7 @@ const Packages = () => {
         console.error('Error adding package: ', error);
       });
   };
+
 
   useEffect(() => {
     showPackages();
@@ -100,8 +102,8 @@ const Packages = () => {
                           </div>
                         </div>
 
-                        <button onClick={() => handleAddPackage(pkg.id)}>Add to Watchlist</button>
-
+                        {/* <button onClick={() => handleAddPackage(pkg.id)}>Add to Watchlist</button> */}
+                        <PaystackHookExample amount={pkg.price}  packageId={pkg.id} handleAddPackage={onclick = ()=> handleAddPackage(pkg.id)}/>
                       </div>
 
                     </div>

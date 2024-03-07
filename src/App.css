@@ -4,6 +4,7 @@
   --primary-color: #0D1F11;
   --primary-color-md: #163D2A;
   --secondary-color: #2FB574;
+  --secondary-color-md: #2fb5743f;
   --tertiary-color: #FFFFFF;
   --dark-color: #000;
   --border-radius: 3rem;
@@ -130,3 +131,44 @@ input {
   color: var(--tertiary-color);
 }
 
+
+
+.stat-con{
+  padding: 2rem 0;
+  margin: auto;
+  width: 95%;
+}
+
+.stat-con-flex{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 4rem;
+}
+
+.stat-box{
+  padding: 1rem;
+  background: var(--secondary-color-md);
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  color: var(--tertiary-color);
+}
+
+.stat-box .chart-icon{
+  font-size: 1.4rem;
+}
+
+.stat-box-btm b{
+  font-size: 1.2rem;
+}
+
+
+@media screen and (max-width:700px){
+  .stat-con-flex{
+    
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+}
