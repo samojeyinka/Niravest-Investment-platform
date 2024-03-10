@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { usePaystackPayment } from 'react-paystack';
+import PaystackPop from '@paystack/inline-js';
+import Cookies from 'js-cookie';
 
 const PaystackDepositForm = () => {
     const [amount, setAmount] = useState('');
     const [email, setEmail] = useState('');
-
+ 
     const handleAmountChange = (e) => {
         setAmount(e.target.value);
     };
@@ -13,29 +14,36 @@ const PaystackDepositForm = () => {
         setEmail(e.target.value);
     };
 
-    const config = {
-        reference: (new Date()).getTime().toString(),
-        email: email,
-        amount: amount * 100, // Convert amount to kobo (Paystack's currency unit)
-        publicKey: 'pk_test_ed99e88c9f3e1caf961089161641b23813a8fc41',
-    };
+    
 
-    const onSuccess = (reference) => {
-        // Store the amount deposited in local storage
-        localStorage.setItem('depositAmount', amount);
-        console.log(amount);
-        console.log('Payment successful. Amount deposited:', amount);
-    };
+    const payWithPastack = (e) => {
+            e.preventDefault();
+            const paystack = new PaystackPop();
+            paystack.newTransaction({
+                key: 'pk_test_ed99e88c9f3e1caf961089161641b23813a8fc41', 
+                amount: amount * 100,
+                email: email,
+                "currency": "NGN",
+                onSuccess(transaction){
+                    let message = `Payment successful Reference ${transaction.reference}`
+                    alert(message);
+                    setAmount("");
+                    setEmail("");
 
-    const onClose = () => {
-        console.log('Payment closed');
-    };
+                    Cookies.set("reference", transaction.reference);
+                    const currentBalance = parseFloat(Cookies.get('amount') || 0);
+                    const newBalance = currentBalance + parseFloat(amount);
+                    Cookies.set(`amount`, newBalance);
+                    Cookies.set("email", email);
+                    console.log(transaction);
 
-    const initializePayment = usePaystackPayment(config);
-
-    const handleDeposit = () => {
-        initializePayment(onSuccess, onClose);
-    };
+                },
+                onCancel(){
+                    let message = `You cancelled the transaction`;
+                    alert(message);
+                }
+            });
+    }
 
     return (
         <div>
@@ -50,7 +58,7 @@ const PaystackDepositForm = () => {
                 <input type="email" value={email} onChange={handleEmailChange} />
             </label>
             <br />
-            <button onClick={handleDeposit}>Deposit</button>
+            <button onClick={payWithPastack}>Deposit</button>
         </div>
     );
 };

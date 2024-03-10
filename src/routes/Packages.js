@@ -15,7 +15,8 @@ const Packages = () => {
 
   const isLoggedIn = Cookies.get('token');
   const userId = Cookies.get('userId');
-
+  const balance = Cookies.get('amount');
+  console.log(balance);
 
   const showPackages = async () => {
     try {
@@ -42,23 +43,48 @@ const Packages = () => {
 
 
 
-  const handleAddPackage = async(packageId) => {
-    // Send a POST request to associate the package with the user
-    try {
-      const token = Cookies.get('token');
-    await axios.post(`http://localhost:3000/users/${userId}/packages`, { package_id: packageId },
-      {
-        headers: {
-          Authorization: `${token}`
-        }
-      });
-      console.log('Package added successfully');
+  // const handleAddPackage = async(packageId) => {
+  //   // Send a POST request to associate the package with the user
+  //   try {
+  //     const token = Cookies.get('token');
+  //   await axios.post(`http://localhost:3000/users/${userId}/packages`, { package_id: packageId },
+  //     {
+  //       headers: {
+  //         Authorization: `${token}`
+  //       }
+  //     });
+  //     console.log('Package added successfully');
       
-    } catch (error) {
-      console.error('Error adding package: ', error);
-    }
+  //   } catch (error) {
+  //     console.error('Error adding package: ', error);
+  //   }
     
-  }
+  // }
+
+  const handleAddPackage = async (packageId, packagePrice) => {
+    if (parseFloat(balance) < parseFloat(packagePrice)) {
+        console.log("Insufficient balance");
+    } else {
+        try {
+            const token = Cookies.get('token');
+            await axios.post(`http://localhost:3000/users/${userId}/packages`, { package_id: packageId },
+                {
+                    headers: {
+                        Authorization: `${token}`
+                    }
+                });
+            console.log('Package added successfully');
+
+            // Deduct package price from balance
+            const newBalance = parseFloat(balance) - parseFloat(packagePrice);
+            Cookies.set('amount', newBalance);
+
+        } catch (error) {
+            console.error('Error adding package: ', error);
+        }
+    }
+}
+
 
 
   useEffect(() => {
@@ -103,7 +129,7 @@ const Packages = () => {
                           </div>
                         </div>
 
-                        <button onClick={() => handleAddPackage(pkg.id)}>Activate</button>
+                        <button onClick={() => handleAddPackage(pkg.id,pkg.price)}>Activate</button>
                         {/* <PaystackHookExample amount={pkg.price}  packageId={pkg.id} handleAddPackage={onclick = ()=> handleAddPackage(pkg.id)}/> */}
                       </div> 
 

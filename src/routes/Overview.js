@@ -15,6 +15,7 @@ const Overview = () => {
 
   const isLoggedIn = Cookies.get('token');
   const userId = Cookies.get('userId');
+  const balance = Cookies.get('amount');
 
 
   const showPackages = async () => {
@@ -107,10 +108,10 @@ try {
                     </i>
                   </div>
                   <div className='stat-box-md'>
-                    <span>Spent this month</span>
+                    <span>Balance</span>
                   </div>
                   <div className='stat-box-btm'>
-                    <b>₦3,000</b>
+                    <b>₦{balance}</b>
                   </div>
                 </div>
                 <div className='stat-box'>
