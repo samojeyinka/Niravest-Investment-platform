@@ -5,7 +5,6 @@ import axios from 'axios';
 import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
-import PaystackHookExample from '../components/PayStackHook';
 
 
 const Packages = () => {
@@ -41,23 +40,25 @@ const Packages = () => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  const handleAddPackage = (packageId) => {
+
+
+  const handleAddPackage = async(packageId) => {
     // Send a POST request to associate the package with the user
-    const token = Cookies.get('token');
-    axios.post(`http://localhost:3000/users/${userId}/packages`, { package_id: packageId },
+    try {
+      const token = Cookies.get('token');
+    await axios.post(`http://localhost:3000/users/${userId}/packages`, { package_id: packageId },
       {
         headers: {
           Authorization: `${token}`
         }
-      })
-      .then(response => {
-        console.log('Package added successfully');
-        // You might want to update the UI to reflect that the package has been added
-      })
-      .catch(error => {
-        console.error('Error adding package: ', error);
       });
-  };
+      console.log('Package added successfully');
+      
+    } catch (error) {
+      console.error('Error adding package: ', error);
+    }
+    
+  }
 
 
   useEffect(() => {
@@ -102,9 +103,9 @@ const Packages = () => {
                           </div>
                         </div>
 
-                        {/* <button onClick={() => handleAddPackage(pkg.id)}>Add to Watchlist</button> */}
-                        <PaystackHookExample amount={pkg.price}  packageId={pkg.id} handleAddPackage={onclick = ()=> handleAddPackage(pkg.id)}/>
-                      </div>
+                        <button onClick={() => handleAddPackage(pkg.id)}>Activate</button>
+                        {/* <PaystackHookExample amount={pkg.price}  packageId={pkg.id} handleAddPackage={onclick = ()=> handleAddPackage(pkg.id)}/> */}
+                      </div> 
 
                     </div>
 

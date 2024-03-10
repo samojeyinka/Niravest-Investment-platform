@@ -9,7 +9,7 @@ const PaystackHookExample = ({ amount, packageId, handleAddPackage }) => {
       publicKey: 'pk_test_ed99e88c9f3e1caf961089161641b23813a8fc41', 
     };
   
-    const onSuccess = (reference) => {
+    const onSuccess = (packageId) => {
       handleAddPackage(packageId);
     };
   
