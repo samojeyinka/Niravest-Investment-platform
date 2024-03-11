@@ -293,6 +293,15 @@ width: 30%;
   transition: .3s ease-in-out;
 }
 
+.withdraw-btn.disabled{
+  opacity: .6;
+}
+
+.withdraw-btn.disabled:hover{
+  background: var(--secondary-color);
+  color: var(--tertiary-color);
+}
+
 .withdraw-btn:hover{
     background: var(--tertiary-color);
     color: var(--primary-color);

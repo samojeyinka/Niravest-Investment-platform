@@ -116,7 +116,20 @@ const Package = () => {
         }
     }, [id, duration, dailyProfits]);
 
-   
+    const [canWithdraw, setCanWithdraw] = useState(false);
+
+    useEffect(() => {
+        const activationDate = localStorage.getItem(`activationDate-${id}`);
+        const days = parseInt(duration.split(" ")[0]); // Parse number of days from duration string
+        if (activationDate && !isNaN(days)) {
+            const expiration = new Date(activationDate);
+            expiration.setDate(expiration.getDate() + days);
+            const currentDate = new Date();
+            if (currentDate > expiration) {
+                setCanWithdraw(true);
+            }
+        }
+    }, [id, duration]);
     
 
 
@@ -133,13 +146,15 @@ const Package = () => {
                             <div className='package-con'>
                                 <div className='pc-flex'>
                                     <div className='pc-flex-left'>
+
+                                        
                                         <Bar
                                             data={{
-                                                labels: ["A", "B", "C", "D"],
+                                                labels:["2 Days ago","7 Days ago","14 Days ago",duration],
                                                 datasets: [
                                                     {
                                                         label: "Revenue",
-                                                        data: [200, 300, 400, 110],
+                                                        data: [totalProfits * 0.4,totalProfits * 0.6,totalProfits * 0.9,totalProfits],
                                                         backgroundColor: [
                                                             "#2FB574",
 
@@ -201,7 +216,7 @@ const Package = () => {
                                             <div><span>Accumulates[24H]: </span><b className='money-accumulates'>₦{accumulatedProfits}</b></div>
                                             <div><span>Activated on: </span><b className='date-activated'>{dateActivated}</b></div>
                                             <div><span>Expires on: </span><b className='date-activated'>{expirationDate}</b></div>
-                                            <div><button className='withdraw-btn'>Withdraw</button></div>
+                                            {canWithdraw ? <div><button className='withdraw-btn'>Withdraw</button></div> : <div><button  disabled className='withdraw-btn disabled' >Withdrawal not available</button></div>}
                                             
                                             </div>
                                             <div className='pc-keypoints-right'>
