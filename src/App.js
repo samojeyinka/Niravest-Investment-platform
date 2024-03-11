@@ -14,6 +14,7 @@ import Account from './routes/Account.js';
 import Watchlist  from './routes/Watchlist.js';
 import PayForm from './components/PayForm.js';
 import PaystackDepositForm from './components/PayForm.js';
+import Package from './routes/Package.js';
 function App() {
 
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/watchlist'  element={<Watchlist  />} />
         <Route path='/Packages'  element={<Packages />} />
         <Route path='/account'  element={<Account />} />
+        <Route path='/package'  element={<Package />} />
         <Route path='/pay'  element={<PaystackDepositForm />} />
       </Routes>
     </div>
