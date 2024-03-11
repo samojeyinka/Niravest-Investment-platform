@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 import { dmd } from '../assets/assets';
-
+import numberFormat from "../components/NumberFormatter";
 
 const Package = () => {
 
@@ -197,9 +197,9 @@ const Package = () => {
                           </div>
                           <div className='p-box-details-right'>
                           <b>{duration}</b>
-                            <b>₦{dailyProfits}</b>
-                            <b>₦{totalProfits}</b>
-                            <b className='p-price'>₦{price}</b>
+                            <b>{numberFormat(dailyProfits)}</b>
+                            <b>{numberFormat(totalProfits)}</b>
+                            <b className='p-price'>{numberFormat(price)}</b>
 
                           </div>
                         </div>
@@ -213,7 +213,7 @@ const Package = () => {
                                 </div>
                                 <div className='pc-keypoints'>
                                             <div className='pc-keypoints-left'>
-                                            <div><span>Accumulates[24H]: </span><b className='money-accumulates'>₦{accumulatedProfits}</b></div>
+                                            <div><span>Accumulates[24H]: </span><b className='money-accumulates'>{numberFormat(accumulatedProfits)}</b></div>
                                             <div><span>Activated on: </span><b className='date-activated'>{dateActivated}</b></div>
                                             <div><span>Expires on: </span><b className='date-activated'>{expirationDate}</b></div>
                                             {canWithdraw ? <div><button className='withdraw-btn'>Withdraw</button></div> : <div><button  disabled className='withdraw-btn disabled' >Withdrawal not available</button></div>}
@@ -222,8 +222,8 @@ const Package = () => {
                                             <div className='pc-keypoints-right'>
                                                 <h4>How it works</h4>
                                                 <div className='hiw-textxs'>
-                                                <p>You have activated this investment package with ₦{price}, and your 
-                                                    expected profit is ₦{totalProfits}, which you will earn ₦{dailyProfits} after every 24 hours. 
+                                                <p>You have activated this investment package with {numberFormat(price)}, and your 
+                                                    expected profit is {numberFormat(totalProfits)}, which you will earn {numberFormat(dailyProfits)} after every 24 hours. 
                                                 Then, after {duration}, you can withdraw your accumulated profits. You cannot
                                                      withdraw until the expiry date and time. 
                                                     You can withdraw to your balance or directly to your bank.</p>

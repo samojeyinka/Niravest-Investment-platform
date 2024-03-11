@@ -5,6 +5,7 @@ import axios from 'axios';
 import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
+import numberFormat from "../components/NumberFormatter"
 
 
 const Packages = () => {
@@ -155,9 +156,9 @@ const Packages = () => {
                             <b className='p-price'>Price</b>
                           </div>
                           <div className='p-box-details-right'>
-                            <b>₦{pkg.daily_profits}</b>
-                            <b>₦{pkg.total_profits}</b>
-                            <b className='p-price'>₦{pkg.price}</b>
+                            <b>{numberFormat(pkg.daily_profits)}</b>
+                            <b>{numberFormat(pkg.total_profits)}</b>
+                            <b className='p-price'>{numberFormat(pkg.price)}</b>
 
                           </div>
                         </div>

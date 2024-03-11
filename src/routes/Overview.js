@@ -7,10 +7,14 @@ import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
 import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { NumericFormat } from 'react-number-format';
+import numberFormat from '../components/NumberFormatter';
 
 const Overview = () => {
 
   const [packages, setPackages] = useState([]);
+  const [totalPackagePrice, setTotalPackagePrice] = useState("");
+  const [estimatedProfits, setEstimatedProfits] = useState("");
   const navigate = useNavigate();
 
 
@@ -18,6 +22,7 @@ const Overview = () => {
   const isLoggedIn = Cookies.get('token');
   const userId = Cookies.get('userId');
   const balance = Cookies.get('amount');
+  const recentDeposit = Cookies.get('recentDeposit');
 
 
   const showPackages = async () => {
@@ -31,8 +36,15 @@ const Overview = () => {
 
       const packages = response.data
 
-      setPackages(packages);
 
+      const totalPrice = packages.reduce((acc,pkg) => acc + parseInt(pkg.price),0);
+      setTotalPackagePrice(totalPrice)
+
+      const estimateProfits = packages.reduce((acc,pkg) => acc + parseInt(pkg.total_profits),0);
+      setEstimatedProfits(estimateProfits);
+
+
+      setPackages(packages);
       console.log(response.data)
     } catch (error) {
       console.log(error);
@@ -70,6 +82,9 @@ const Overview = () => {
     navigate(`/package?id=${currentPackageId}`);
   }
 
+  
+
+
 
   useEffect(() => {
     showPackages();
@@ -96,7 +111,8 @@ const Overview = () => {
                     <span>Balance</span>
                   </div>
                   <div className='stat-box-btm'>
-                    <b>₦{balance}</b>
+                    <b>{numberFormat(balance)}</b>
+                    
                   </div>
                 </div>
                 <div className='stat-box'>
@@ -107,10 +123,10 @@ const Overview = () => {
                     </i>
                   </div>
                   <div className='stat-box-md'>
-                    <span>received this month</span>
+                    <span>Recent Deposit</span>
                   </div>
                   <div className='stat-box-btm'>
-                    <b>₦7,000</b>
+                    <b>{numberFormat(recentDeposit || 0)}</b>
                   </div>
                 </div>
                 <div className='stat-box'>
@@ -124,7 +140,7 @@ const Overview = () => {
                     <span>Investments</span>
                   </div>
                   <div className='stat-box-btm'>
-                    <b>₦56,000</b>
+                    <b>{numberFormat(totalPackagePrice)}</b>
                   </div>
                 </div>
 
@@ -135,10 +151,10 @@ const Overview = () => {
                     </i>
                   </div>
                   <div className='stat-box-md'>
-                    <span>Cashback</span>
+                    <span>Estimated Profits</span>
                   </div>
                   <div className='stat-box-btm'>
-                    <b>₦1,100</b>
+                    <b>{numberFormat(estimatedProfits)}</b>
                   </div>
                 </div>
               </div>
@@ -172,9 +188,9 @@ const Overview = () => {
                               <b className='p-price'>Price</b>
                             </div>
                             <div className='p-box-details-right'>
-                              <b>₦{pkg.daily_profits}</b>
-                              <b>₦{pkg.total_profits}</b>
-                              <b className='p-price'>₦{pkg.price}</b>
+                              <b>{numberFormat(pkg.daily_profits)}</b>
+                              <b>{numberFormat(pkg.total_profits)}</b>
+                              <b className='p-price'>{numberFormat(pkg.price)}</b>
 
                             </div>
                           </div>

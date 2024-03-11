@@ -31,6 +31,7 @@ const PaystackDepositForm = () => {
                     setEmail("");
 
                     Cookies.set("reference", transaction.reference);
+                    Cookies.set("recentDeposit", amount)
                     const currentBalance = parseFloat(Cookies.get('amount') || 0);
                     const newBalance = currentBalance + parseFloat(amount);
                     Cookies.set(`amount`, newBalance);
