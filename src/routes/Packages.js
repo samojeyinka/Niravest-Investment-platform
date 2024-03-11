@@ -10,6 +10,8 @@ import '../stylesheets/Packages.css';
 const Packages = () => {
 
   const [packages, setPackages] = useState([]);
+  const [activatedPackages, setActivatedPackages] = useState([]);
+  const [btnText, setBtnText] = useState("Activated");
 
 
 
@@ -43,47 +45,74 @@ const Packages = () => {
 
 
 
-  // const handleAddPackage = async(packageId) => {
-  //   // Send a POST request to associate the package with the user
-  //   try {
-  //     const token = Cookies.get('token');
-  //   await axios.post(`http://localhost:3000/users/${userId}/packages`, { package_id: packageId },
-  //     {
-  //       headers: {
-  //         Authorization: `${token}`
-  //       }
-  //     });
-  //     console.log('Package added successfully');
-      
-  //   } catch (error) {
-  //     console.error('Error adding package: ', error);
-  //   }
-    
-  // }
+
+
 
   const handleAddPackage = async (packageId, packagePrice) => {
     if (parseFloat(balance) < parseFloat(packagePrice)) {
-        console.log("Insufficient balance");
+      console.log("Insufficient balance");
+    } else if (activatedPackages.includes(packageId)) {
+      console.log("Package already activated");
+      alert("Package already activated");
     } else {
-        try {
-            const token = Cookies.get('token');
-            await axios.post(`http://localhost:3000/users/${userId}/packages`, { package_id: packageId },
-                {
-                    headers: {
-                        Authorization: `${token}`
-                    }
-                });
-            console.log('Package added successfully');
+      try {
+        const token = Cookies.get('token');
+        await axios.post(`http://localhost:3000/users/${userId}/packages`, { package_id: packageId },
+          {
+            headers: {
+              Authorization: `${token}`
+            }
+          });
+        console.log('Package added successfully');
 
-            // Deduct package price from balance
-            const newBalance = parseFloat(balance) - parseFloat(packagePrice);
-            Cookies.set('amount', newBalance);
+        // Deduct package price from balance
+        const newBalance = parseFloat(balance) - parseFloat(packagePrice);
+        Cookies.set('amount', newBalance);
 
-        } catch (error) {
-            console.error('Error adding package: ', error);
-        }
+        // Store package ID in local storage
+        let updatedActivatedPackages = [...activatedPackages, packageId];
+        localStorage.setItem('activatedPackages', JSON.stringify(updatedActivatedPackages));
+
+        const updatedPackages = packages.map(pkg => {
+          if (pkg.id === packageId) {
+            pkg.activated = true;
+          }
+          return pkg;
+        });
+        setPackages(updatedPackages);
+
+      } catch (error) {
+        console.error('Error adding package oops!: ', error);
+      }
     }
-}
+  }
+
+
+
+
+  useEffect(() => {
+    setPackages(prevPackages => {
+      return prevPackages.map(pkg => {
+        if (activatedPackages.includes(pkg.id)) {
+          return { ...pkg, activated: true };
+        }
+        return pkg;
+      });
+    });
+  }, [activatedPackages]);
+
+
+
+  useEffect(() => {
+    const storedActivatedPackages = JSON.parse(localStorage.getItem('activatedPackages')) || [];
+    setActivatedPackages(storedActivatedPackages);
+  }, []);
+
+
+  const activePackages = JSON.parse(localStorage.getItem('activatedPackages')) || [];
+  activePackages.forEach((pack) => {
+    console.log(pack)
+  });
 
 
 
@@ -128,17 +157,18 @@ const Packages = () => {
 
                           </div>
                         </div>
+                        <button onClick={() => handleAddPackage(pkg.id, pkg.price)}>Activate</button>
 
-                        <button onClick={() => handleAddPackage(pkg.id,pkg.price)}>Activate</button>
-                        {/* <PaystackHookExample amount={pkg.price}  packageId={pkg.id} handleAddPackage={onclick = ()=> handleAddPackage(pkg.id)}/> */}
-                      </div> 
+
+
+
+
+
+                      </div>
 
                     </div>
 
                   </div>
-
-
-
                 ))
                 }
               </div>)
