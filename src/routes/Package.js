@@ -44,7 +44,6 @@ const Package = () => {
             setPrice(price);
             setTotalProfits(total_profits);
             setDailyProfits(daily_profits);
-            setDailyProfits(duration);
             setDuration(duration);
 
             console.log(name, duration);
@@ -60,6 +59,66 @@ const Package = () => {
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
+
+      const [dateActivated, setDateActivated] = useState("");
+
+      useEffect(() => {
+        const activationDate = localStorage.getItem(`activationDate-${id}`);
+        if (activationDate) {
+            const formattedDate = new Date(activationDate).toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            });
+            setDateActivated(formattedDate);
+        }
+    }, [id]);
+
+    
+    const [expirationDate, setExpirationDate] = useState("");
+
+    useEffect(() => {
+        const activationDate = localStorage.getItem(`activationDate-${id}`);
+        const days = parseInt(duration.split(" ")[0]); // Parse number of days from duration string
+        if (activationDate && !isNaN(days)) {
+            const expiration = new Date(activationDate);
+            expiration.setDate(expiration.getDate() + days);
+            const formattedExpirationDate = expiration.toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            });
+            setExpirationDate(formattedExpirationDate);
+        }
+    }, [id, duration]);
+
+    const [accumulatedProfits, setAccumulatedProfits] = useState(0);
+
+    useEffect(() => {
+        const activationDate = localStorage.getItem(`activationDate-${id}`);
+        const days = parseInt(duration.split(" ")[0]); // Parse number of days from duration string
+        if (activationDate && !isNaN(days)) {
+            const expiration = new Date(activationDate);
+            expiration.setDate(expiration.getDate() + days);
+            const currentDate = new Date();
+            if (currentDate <= expiration) {
+                const millisecondsPerDay = 24 * 60 * 60 * 1000;
+                const daysElapsed = Math.floor((currentDate - new Date(activationDate)) / millisecondsPerDay);
+                const accumulated = daysElapsed * parseFloat(dailyProfits);
+                setAccumulatedProfits(accumulated);
+            }
+        }
+    }, [id, duration, dailyProfits]);
+
+   
+    
+
 
     useEffect(() => {
         showPackage();
@@ -129,13 +188,6 @@ const Package = () => {
 
                           </div>
                         </div>
-                        
-
-
-
-
-
-
                       </div>
 
                
@@ -144,6 +196,26 @@ const Package = () => {
                                     </div>
 
                                 </div>
+                                <div className='pc-keypoints'>
+                                            <div className='pc-keypoints-left'>
+                                            <div><span>Accumulates[24H]: </span><b className='money-accumulates'>₦{accumulatedProfits}</b></div>
+                                            <div><span>Activated on: </span><b className='date-activated'>{dateActivated}</b></div>
+                                            <div><span>Expires on: </span><b className='date-activated'>{expirationDate}</b></div>
+                                            <div><button className='withdraw-btn'>Withdraw</button></div>
+                                            
+                                            </div>
+                                            <div className='pc-keypoints-right'>
+                                                <h4>How it works</h4>
+                                                <div className='hiw-textxs'>
+                                                <p>You have activated this investment package with ₦{price}, and your 
+                                                    expected profit is ₦{totalProfits}, which you will earn ₦{dailyProfits} after every 24 hours. 
+                                                Then, after {duration}, you can withdraw your accumulated profits. You cannot
+                                                     withdraw until the expiry date and time. 
+                                                    You can withdraw to your balance or directly to your bank.</p>
+                                                </div>
+                                            </div>
+                                </div>
+                                
                             </div>
                         </div>
 

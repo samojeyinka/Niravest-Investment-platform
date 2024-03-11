@@ -73,6 +73,10 @@ const Packages = () => {
         let updatedActivatedPackages = [...activatedPackages, packageId];
         localStorage.setItem('activatedPackages', JSON.stringify(updatedActivatedPackages));
 
+          // Store activation date for the package
+    let activationDate = new Date().toISOString();
+    localStorage.setItem(`activationDate-${packageId}`, activationDate);
+
         const updatedPackages = packages.map(pkg => {
           if (pkg.id === packageId) {
             pkg.activated = true;
