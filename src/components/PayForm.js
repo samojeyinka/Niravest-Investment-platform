@@ -47,19 +47,23 @@ const PaystackDepositForm = () => {
     }
 
     return (
-        <div>
+        <div class="pay-form-con">
             <h2>Deposit Form</h2>
-            <label>
-                Amount:
-                <input type="number" value={amount} onChange={handleAmountChange} />
-            </label>
+            <form class="pay-form">
+            <div>
+            <label>Amount:</label>
+            <input type="number" value={amount} onChange={handleAmountChange} />
+            </div>
             <br />
-            <label>
-                Email:
-                <input type="email" value={email} onChange={handleEmailChange} />
-            </label>
+            <div>
+            <label>Email:</label>
+            <input type="email" value={email} onChange={handleEmailChange} />
+            </div>
             <br />
+            <div>
             <button onClick={payWithPastack}>Deposit</button>
+            </div>
+            </form>
         </div>
     );
 };

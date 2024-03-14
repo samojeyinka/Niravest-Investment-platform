@@ -5,7 +5,7 @@ import axios from 'axios';
 import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
-import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine } from 'react-icons/fa';
+import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine,FaStamp } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { NumericFormat } from 'react-number-format';
 import numberFormat from '../components/NumberFormatter';
@@ -111,7 +111,7 @@ const Overview = () => {
                     <span>Balance</span>
                   </div>
                   <div className='stat-box-btm'>
-                    <b>{numberFormat(balance)}</b>
+                    <b>{numberFormat(balance || 0)}</b>
                     
                   </div>
                 </div>
@@ -198,7 +198,7 @@ const Overview = () => {
 
                           <div className='p-btns'>
                             <button onClick={() => packagePage(pkg.id)} className='p-btns-activate'>Insight</button>
-                            <i onClick={() => handleRemovePackage(pkg.id)} className='p-btns-rm' title='Remove'><FaTrash /></i>
+                            <i className='p-btns-active' title='active'><FaStamp /></i>
                           </div>
 
                         </div>

@@ -124,7 +124,7 @@ input {
   width: 100%;
   min-height: 100vh;
   background-color: var(--primary-color-md) !important;
-
+position: relative;
 }
 
 .user-main h2 {
@@ -376,4 +376,144 @@ width: 30%;
   .package-con{
     width: 100%; 
   }
+}
+
+
+/* Payment page  */
+
+.payment{
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%; /* Set your desired width */
+  height: 90%;
+  background:rgba(19, 23, 19, 0.344);
+  border-radius: var(--border-radius-md);
+}
+
+.d-w-con{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  
+}
+
+.d-w-con div{
+  width: 100%;
+}
+.pay-form-con{
+  padding: 2rem 0;
+}
+
+.pay-form-con form{
+  padding: .5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+.pay-form-con form div{
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.pay-form-con form input{
+  padding: 1rem;
+  background: var(--primary-color-md);
+  border-radius: var(--border-radius-md);
+  color: var(--tertiary-color);
+}
+
+.pay-form-con form label{
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--tertiary-color);
+}
+
+.pay-form-con form button{
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  background: var(--secondary-color);
+  border-radius: var(--border-radius-md);
+  color: var(--tertiary-color);
+}
+
+
+
+@media screen and (max-width: 1200px) {
+  .payment{
+    padding: 1rem;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    transform: translate(-0%, -0%);
+    width: 100%; 
+    height: 100%; 
+  }
+
+}
+
+@media screen and (max-width: 760px) {
+  .payment{
+    padding: 1rem;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    transform: translate(-0%, -0%);
+    width: 100%; 
+    height: 100%; 
+  }
+
+
+  .d-w-con{
+    flex-direction: column;
+    gap: 0rem;
+    
+  }
+}
+
+
+.logged_in_user_home{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--tertiary-color);
+}
+
+.logged_in_user_home h2{
+  font-size: 1.2rem;
+}
+
+.logged_in_user_home h2 a{
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+
+/* Admin login style */
+
+.admin-login{
+  width: 100%;
+  height: 100%;
+}
+
+.admin-login-con{
+  padding-top: 3rem;
+  margin: auto;
+  width: 50%;
+}
+
+.admin-login-con h3{
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--tertiary-color);
 }

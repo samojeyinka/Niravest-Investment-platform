@@ -10,9 +10,23 @@ import Reviews from '../components/Reviews';
 import Advert from '../components/Advert';
 import Download from '../components/Download';
 import Footer from '../components/Footer';
+import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const isLoggedIn = Cookies.get("token");
   return (
+    <>
+    {isLoggedIn ? 
+    <React.Fragment>
+      <section className='logged_in_user_home'>
+          <div>
+            <h2>Go Back to your <Link to={"/overview"}>dashbaord</Link></h2>
+          </div>
+      </section>
+    </React.Fragment>
+    :
+
     <React.Fragment>
     <Hero/>
     <ShowCase/>
@@ -26,6 +40,8 @@ const Home = () => {
     <Download/>
     <Footer/>
     </React.Fragment>
+}
+    </>
   )
 }
 

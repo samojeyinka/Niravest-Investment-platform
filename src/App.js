@@ -11,10 +11,12 @@ import Cookies from 'js-cookie';
 import Payment from './routes/Payment.js'
 import Packages from './routes/Packages.js';
 import Account from './routes/Account.js';
-import Watchlist  from './routes/Watchlist.js';
 import PayForm from './components/PayForm.js';
 import PaystackDepositForm from './components/PayForm.js';
 import Package from './routes/Package.js';
+import Services from './routes/Services.js';
+import AdminLogin from './admin/Login.js';
+import Dashboard from './admin/Dashboard.js';
 function App() {
 
   return (
@@ -28,11 +30,14 @@ function App() {
         <Route path='/signin'  element={<Login />} />
         <Route path='/overview'  element={<Overview />} />
         <Route path='/payment'  element={<Payment />} />
-        <Route path='/watchlist'  element={<Watchlist  />} />
         <Route path='/Packages'  element={<Packages />} />
         <Route path='/account'  element={<Account />} />
         <Route path='/package'  element={<Package />} />
+        <Route path='/services'  element={<Services/>} />
         <Route path='/pay'  element={<PaystackDepositForm />} />
+       {/* Admin routes */}
+        <Route path='/admin/login' element={<AdminLogin />} />
+        <Route path='/admin/dashboard' element={<Dashboard/>} />
       </Routes>
     </div>
   );

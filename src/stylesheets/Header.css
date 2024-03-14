@@ -119,11 +119,7 @@ header{
     font-weight: 500;
 }
 
-.dp_links li:hover {
-    background: var(--tertiary-color);
-    transition:.5s ease-in-out;
 
-}
 
 .dp_links li:hover a {
     color: var(--primary-color);

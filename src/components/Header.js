@@ -60,10 +60,11 @@ const Header = () => {
 
 
     const isLoggedIn = Cookies.get('token');
+    const adminEmail = Cookies.get('adminEmail');
 
     return (
 <section>
-{isLoggedIn ? (
+{isLoggedIn || adminEmail ? (
     <div>
     <></>
     </div>
@@ -72,10 +73,12 @@ const Header = () => {
         <header ref={dropdown}>
 
             <nav className='navbar'>
+                <Link to={"/"}>
                 <div className='navbar_left'>
                     <img src={logo} className='logo_img' />
                     <span className='logo_txt'>niravest</span>
                 </div>
+                </Link>
 
                 <div className='hamburger' onClick={handleClick}>
                     <div className={`blur ${click ? 'active' : ''}`}></div>
@@ -98,20 +101,20 @@ const Header = () => {
                         </li>
 
                         <li>
-                            <Link to={'/'} onClick={openPage}>
+                            <Link to={'/services'} onClick={openPage}>
                                 Service
                             </Link>
                         </li>
 
 
                         <li className='desktop-packages-link'>
-                            <Link to={'/'}>
+                            <Link to={'/signin'}>
                                 Packages
                             </Link>
                         </li>
 
                         <li onClick={() => handleDropPackage('d1')} id='d1' className='mobile-packages-link'>
-                            <Link to={'/'} >
+                            <Link to={''} >
                                 Packages
                             </Link>
                             <i className='p-angle'>
@@ -170,7 +173,7 @@ const Header = () => {
 
                 </div>
                 <div className='navbar_right'>
-                    <button>Download The App</button>
+                    <button title='Coming soon...'>Download The App</button>
                 </div>
             </nav>
 

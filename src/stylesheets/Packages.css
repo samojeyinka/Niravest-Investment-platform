@@ -95,8 +95,8 @@
     background: var(--secondary-color) !important;
   }
 
-  .p-btns-rm{
-  color: red !important;
+  .p-btns-active{
+  color: var(--secondary-color) !important;
   cursor: pointer;
   }
 
