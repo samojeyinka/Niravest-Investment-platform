@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import Cookies from 'js-cookie';
 import { Link,NavLink,useNavigate } from 'react-router-dom';
-import {FaRegMoneyBillAlt,FaUsers,FaUser,FaSignOutAlt} from 'react-icons/fa'
+import {FaRegMoneyBillAlt,FaUsers,FaUser,FaSignOutAlt,FaPlus} from 'react-icons/fa'
 import { logo } from '../assets/assets';
 import axios from 'axios';
 
@@ -31,7 +31,7 @@ const AdminNav = () => {
                 <ul className='user-navbar-menu-links'>
 
                     <li>
-                      <NavLink to={"/admin/packages"}>
+                      <NavLink to={"/admin/dashboard"}>
                       <i className='umml-icon'>
                         <FaRegMoneyBillAlt/>
                       </i>
@@ -42,7 +42,18 @@ const AdminNav = () => {
                     </li>
 
                     <li>
-                      <NavLink to={"/admin/packages"}>
+                      <NavLink to={"/admin/package/new"}>
+                      <i className='umml-icon'>
+                        <FaPlus/>
+                      </i>
+                      <span>
+                        New Package
+                      </span>
+                      </NavLink>
+                    </li>
+
+                    <li>
+                      <NavLink to={"/admin/users"}>
                       <i className='umml-icon'>
                         <FaUsers/>
                       </i>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate ,useLocation} from 'react-router-dom'
 import { logo } from '../assets/assets'
 import { Link } from 'react-router-dom'
 import '../stylesheets/Header.css'
@@ -14,6 +14,7 @@ const Header = () => {
     const [click, setClick] = useState(false);
     const [dropPackages, setDropPackages] = useState('d1');
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleClick = () => {
         setClick(!click);
@@ -60,16 +61,15 @@ const Header = () => {
 
 
     const isLoggedIn = Cookies.get('token');
-    const adminEmail = Cookies.get('adminEmail');
+
+    if (isLoggedIn || location.pathname.includes('/admin/')) {
+        return null; // Do not render header if user is logged in or if route includes '/admin/'
+    }
+  
 
     return (
 <section>
-{isLoggedIn || adminEmail ? (
-    <div>
-    <></>
-    </div>
-) :
-(
+
         <header ref={dropdown}>
 
             <nav className='navbar'>
@@ -179,7 +179,7 @@ const Header = () => {
 
 
         </header>
-)}
+
         </section>
     )
 }

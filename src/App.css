@@ -517,3 +517,67 @@ width: 30%;
   font-weight: 600;
   color: var(--tertiary-color);
 }
+
+
+.admin-package-update-btn{
+  width: fit-content !important;
+}
+
+.trash-package{
+  color: red;
+  cursor: pointer;
+}
+
+
+/* New package styles */
+
+.pkg-form-con{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:rgba(19, 23, 19, 0.344);
+}
+
+.pkg-form-con form {
+  width: 40%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap:.8rem;
+}
+
+
+.pkg-form-con form label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--tertiary-color);
+}
+
+.pkg-form-con form input{
+  margin-top: .4rem;
+  padding: .8rem;
+  width: 100%;
+  background: var(--primary-color-md);
+  border-radius: var(--border-radius-md);
+  color: var(--tertiary-color);
+}
+
+.check-active{
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.pkg-form-con form  button{
+  font-size: 1.2rem;
+  width: 100%;
+  padding: .8rem;
+  color: var(--tertiary-color);
+  background:var(--secondary-color);
+  border-radius: var(--border-radius-md);
+}
+
+

@@ -17,6 +17,9 @@ import Package from './routes/Package.js';
 import Services from './routes/Services.js';
 import AdminLogin from './admin/Login.js';
 import Dashboard from './admin/Dashboard.js';
+import Users from './admin/Users.js';
+import EditPackage from './admin/EditPackage.js';
+import NewPackage from './admin/NewPackage.js';
 function App() {
 
   return (
@@ -38,6 +41,9 @@ function App() {
        {/* Admin routes */}
         <Route path='/admin/login' element={<AdminLogin />} />
         <Route path='/admin/dashboard' element={<Dashboard/>} />
+        <Route path='/admin/users' element={<Users/>} />
+        <Route path='/admin/package/edit' element={<EditPackage/>} />
+        <Route path='/admin/package/new' element={<NewPackage/>} />
       </Routes>
     </div>
   );
