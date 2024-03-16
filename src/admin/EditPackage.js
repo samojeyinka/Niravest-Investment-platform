@@ -5,27 +5,152 @@ import axios from 'axios';
 import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
-import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine,FaStamp } from 'react-icons/fa';
+import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine, FaStamp } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { NumericFormat } from 'react-number-format';
 import numberFormat from '../components/NumberFormatter';
 import AdminNav from './AdminNav';
 
+
+
 const EditPackage = () => {
   const adminLoggedIn = Cookies.get("adminToken");
+
+  const [newPName, setNewPName] = useState('');
+  const [newPPrice, setNewPPrice] = useState('');
+  const [newTotalProfits, setNewTotalProfits] = useState('');
+  const [newDailyProfits, setNewDailyProfits] = useState('');
+  const [newPDuration, setNewPDuration] = useState('');
+  const [newIsActive, setNewIsActive] = useState();
+
+  const navigate = useNavigate();
+
+
+  const params = new URLSearchParams(window.location.search)
+  const id = params.get('id');
+
+
+
+  const getPackage = async () => {
+    try {
+      const token = Cookies.get('adminToken');
+      const { data: { name, price, total_profits, daily_profits, duration, active } } = await axios.get(`http://localhost:3000/packages/${id}`, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      console.log("gba", name);
+      setNewPName(name);
+      setNewPPrice(price);
+      setNewTotalProfits(total_profits);
+      setNewDailyProfits(daily_profits);
+      setNewPDuration(duration);
+      setNewIsActive(active);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const token = Cookies.get('adminToken');
+      const { data: { name, price, total_profits, daily_profits, duration, active } } = await axios.patch(`http://localhost:3000/packages/${id}`, {
+        name: newPName,
+        price: newPPrice,
+        total_profits: newTotalProfits,
+        daily_profits: newDailyProfits,
+        duration: newPDuration,
+        active: newIsActive
+      }, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+
+      setNewPName(name);
+      setNewPPrice(price);
+      setNewTotalProfits(total_profits);
+      setNewDailyProfits(daily_profits);
+      setNewPDuration(duration);
+      setNewIsActive(active);
+      alert('Package successfully updated');
+      navigate("/admin/dashboard");
+    } catch (error) {
+      console.error(error);
+      alert('Unable to update package');
+    }
+  }
+
+
+  useEffect(() => {
+    getPackage();
+  }, [])
+
   return (
     <div>
 
-      {adminLoggedIn ? 
-      
+      {adminLoggedIn ?
+
         <section className='user'>
-          <AdminNav/>
+          <AdminNav />
           <main className='user-main'>
-            <h1>Edit Package</h1>
+            <h2>Edit package</h2>
+            <div className='pkg-form-con'>
+              <form onSubmit={handleFormSubmit}>
+                <div>
+                  <label>Package name</label>
+                  <input type='text'
+                    value={newPName}
+                    onChange={(e) => setNewPName(e.target.value)}
+                    placeholder='Enter investment package name...' required />
+                </div>
+                <div>
+                  <label>Price</label>
+                  <input type='number'
+                    value={newPPrice}
+                    onChange={(e) => setNewPPrice(e.target.value)}
+                    placeholder='Enter investment package price...' required />
+                </div>
+                <div>
+                  <label>Total profit</label>
+                  <input type='number'
+                    value={newTotalProfits}
+                    onChange={(e) => setNewTotalProfits(e.target.value)}
+                    placeholder='Enter investment total profit...' required />
+                </div>
+                <div>
+                  <label>Daily profit</label>
+                  <input type='number'
+                    value={newDailyProfits}
+                    onChange={(e) => setNewDailyProfits(e.target.value)}
+                    placeholder='Enter investment daily profits...' required />
+                </div>
+                <div>
+                  <label>Package duration</label>
+                  <input type='text'
+                    value={newPDuration}
+                    onChange={(e) => setNewPDuration(e.target.value)}
+                    placeholder='Enter investment package duration...' required />
+                </div>
+                <div className='check-active'>
+                  <label>Active</label>
+                  <input type='checkbox'
+                    name='isActive'
+                    checked={newIsActive}
+                    onChange={(e) => setNewIsActive(e.target.checked)}
+                  />
+                </div>
+                <div>
+                  <button type="submit">Update</button>
+                </div>
+              </form>
+            </div>
           </main>
         </section>
         :
-        
+
         <div>sorry</div>
 
       }

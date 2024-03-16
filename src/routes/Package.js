@@ -39,7 +39,7 @@ const Package = () => {
             const details = response.data;
             const { name, price, total_profits,
                 daily_profits, duration } = details;
-         
+
             setName(name);
             setPrice(price);
             setTotalProfits(total_profits);
@@ -58,11 +58,11 @@ const Package = () => {
 
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
-      }
+    }
 
-      const [dateActivated, setDateActivated] = useState("");
+    const [dateActivated, setDateActivated] = useState("");
 
-      useEffect(() => {
+    useEffect(() => {
         const activationDate = localStorage.getItem(`activationDate-${id}`);
         if (activationDate) {
             const formattedDate = new Date(activationDate).toLocaleString('en-US', {
@@ -77,7 +77,7 @@ const Package = () => {
         }
     }, [id]);
 
-    
+
     const [expirationDate, setExpirationDate] = useState("");
 
     useEffect(() => {
@@ -130,7 +130,7 @@ const Package = () => {
             }
         }
     }, [id, duration]);
-    
+
 
 
     useEffect(() => {
@@ -147,14 +147,14 @@ const Package = () => {
                                 <div className='pc-flex'>
                                     <div className='pc-flex-left'>
 
-                                        
+
                                         <Bar
                                             data={{
-                                                labels:["2 Days ago","7 Days ago","14 Days ago",duration],
+                                                labels: ["2 Days ago", "7 Days ago", "14 Days ago", duration],
                                                 datasets: [
                                                     {
                                                         label: "Revenue",
-                                                        data: [totalProfits * 0.4,totalProfits * 0.6,totalProfits * 0.9,totalProfits],
+                                                        data: [totalProfits * 0.4, totalProfits * 0.6, totalProfits * 0.9, totalProfits],
                                                         backgroundColor: [
                                                             "#2FB574",
 
@@ -176,61 +176,61 @@ const Package = () => {
                                     </div>
                                     <div className='pc-flex-right'>
                                         <div className='package-box'>
-                    
-                                        <div className='pbbl-img-box'>
-                          <img src={dmd} />
-                        </div>
-                      <h2>{capitalizeFirstLetter(name)}</h2>
-                     
-                 
-                
-                    
-                      
-                     
-                      <div className='p-box-btm-right'>
-                        <div className='p-box-btm-right-details'>
-                          <div className='p-box-details-left'>
-                            <b>Duration</b>
-                            <b>Daily Profits</b>
-                            <b>Total Profits</b>
-                            <b className='p-price'>Price</b>
-                          </div>
-                          <div className='p-box-details-right'>
-                          <b>{duration}</b>
-                            <b>{numberFormat(dailyProfits)}</b>
-                            <b>{numberFormat(totalProfits)}</b>
-                            <b className='p-price'>{numberFormat(price)}</b>
 
-                          </div>
-                        </div>
-                      </div>
+                                            <div className='pbbl-img-box'>
+                                                <img src={dmd} />
+                                            </div>
+                                            <h2>{capitalizeFirstLetter(name)}</h2>
 
-               
 
-                  </div>
+
+
+
+
+                                            <div className='p-box-btm-right'>
+                                                <div className='p-box-btm-right-details'>
+                                                    <div className='p-box-details-left'>
+                                                        <b>Duration</b>
+                                                        <b>Daily Profits</b>
+                                                        <b>Total Profits</b>
+                                                        <b className='p-price'>Price</b>
+                                                    </div>
+                                                    <div className='p-box-details-right'>
+                                                        <b>{duration}</b>
+                                                        <b>{numberFormat(dailyProfits)}</b>
+                                                        <b>{numberFormat(totalProfits)}</b>
+                                                        <b className='p-price'>{numberFormat(price)}</b>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
                                     </div>
 
                                 </div>
                                 <div className='pc-keypoints'>
-                                            <div className='pc-keypoints-left'>
-                                            <div><span>Accumulates[24H]: </span><b className='money-accumulates'>{numberFormat(accumulatedProfits)}</b></div>
-                                            <div><span>Activated on: </span><b className='date-activated'>{dateActivated}</b></div>
-                                            <div><span>Expires on: </span><b className='date-activated'>{expirationDate}</b></div>
-                                            {canWithdraw ? <div><button className='withdraw-btn'>Withdraw</button></div> : <div><button  disabled className='withdraw-btn disabled' >Withdrawal not available</button></div>}
-                                            
-                                            </div>
-                                            <div className='pc-keypoints-right'>
-                                                <h4>How it works</h4>
-                                                <div className='hiw-textxs'>
-                                                <p>You have activated this investment package with {numberFormat(price)}, and your 
-                                                    expected profit is {numberFormat(totalProfits)}, which you will earn {numberFormat(dailyProfits)} after every 24 hours. 
+                                    <div className='pc-keypoints-left'>
+                                        <div><span>Accumulates[24H]: </span><b className='money-accumulates'>{numberFormat(accumulatedProfits)}</b></div>
+                                        <div><span>Activated on: </span><b className='date-activated'>{dateActivated}</b></div>
+                                        <div><span>Expires on: </span><b className='date-activated'>{expirationDate}</b></div>
+                                        {canWithdraw ? <div><button className='withdraw-btn'>Withdraw</button></div> : <div><button disabled className='withdraw-btn disabled' >Withdrawal not available</button></div>}
+
+                                    </div>
+                                    <div className='pc-keypoints-right'>
+                                        <h4>How it works</h4>
+                                        <div className='hiw-textxs'>
+                                            <p>You have activated this investment package with {numberFormat(price)}, and your
+                                                expected profit is {numberFormat(totalProfits)}, which you will earn {numberFormat(dailyProfits)} after every 24 hours.
                                                 Then, after {duration}, you can withdraw your accumulated profits. You cannot
-                                                     withdraw until the expiry date and time. 
-                                                    You can withdraw to your balance or directly to your bank.</p>
-                                                </div>
-                                            </div>
+                                                withdraw until the expiry date and time.
+                                                You can withdraw to your balance or directly to your bank.</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                
+
                             </div>
                         </div>
 
