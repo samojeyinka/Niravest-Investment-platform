@@ -585,3 +585,48 @@ input {
   background: var(--secondary-color);
   border-radius: var(--border-radius-md);
 }
+
+/* Users styles */
+
+
+.users-table-con{
+  padding: 1rem;
+  margin: auto;
+  width: 80%;
+  background: rgba(19, 23, 19, 0.344);
+}
+
+
+.users-table-con table{
+  width: 100%;
+  text-align: left;
+}
+
+.users-table-con table thead{
+  color: var(--tertiary-color);
+}
+
+.users-table-con table thead th{
+  padding-bottom: 1rem;
+}
+
+.users-table-con table tbody{
+  color: var(--secondary-color);
+}
+
+
+.users-table-con table td{
+  padding: 1rem 0 ;
+}
+
+
+
+.users-table-con table .delete-user{
+  color: #ff0000;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.users-table-con table .delete-user:hover{
+  transform: scale(1.1);
+}

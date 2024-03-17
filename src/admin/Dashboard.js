@@ -69,7 +69,7 @@ useEffect(() => {
           <main className='user-main'>
             {packages.length === 0 ? (<div className='empty-watchlist'>
 
-              <p>Sorry! There are no packages to invest in at the moment.</p>
+              <p>Sorry! There are no packages.</p>
             </div>) :
               (<div className='packages-grid'>
                 {packages.map((pkg) => (
