@@ -52,6 +52,7 @@ const Packages = () => {
 
   const handleAddPackage = async (packageId, packagePrice) => {
     if (parseFloat(balance) < parseFloat(packagePrice)) {
+      alert("Insufficient balance,please topup your account balance")
       console.log("Insufficient balance");
     } else if (activatedPackages.includes(packageId)) {
       console.log("Package already activated");

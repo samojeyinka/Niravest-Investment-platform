@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { NumericFormat } from 'react-number-format';
 import numberFormat from '../components/NumberFormatter';
 import AdminNav from './AdminNav';
+import Unauthorized from '../utils/Unauthorized';
 
 
 
@@ -151,7 +152,7 @@ const EditPackage = () => {
         </section>
         :
 
-        <div>sorry</div>
+      <Unauthorized/>
 
       }
 

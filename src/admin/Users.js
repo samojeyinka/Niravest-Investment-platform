@@ -11,6 +11,7 @@ import { NumericFormat } from 'react-number-format';
 import numberFormat from '../components/NumberFormatter';
 import AdminNav from './AdminNav';
 import FormatDate from '../utils/FormatDate'
+import Unauthorized from '../utils/Unauthorized';
 
 const Users = () => {
   const adminLoggedIn = Cookies.get("adminToken");
@@ -85,7 +86,7 @@ const Users = () => {
         </section>
         :
 
-        <div>sorry</div>
+       <Unauthorized/>
 
       }
 

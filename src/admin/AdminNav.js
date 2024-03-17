@@ -142,7 +142,7 @@ const AdminNav = () => {
                       </Link>
                     </li>
                     <li className='u-logout'>
-                      <Link to={'/'} onClick={handleLogOut}>
+                      <Link to={'/home'} onClick={handleLogOut}>
                       <i className='umml-icon'>
                         <FaSignOutAlt/>
                       </i>
