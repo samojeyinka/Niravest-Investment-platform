@@ -21,8 +21,8 @@ const Overview = () => {
 
   const isLoggedIn = Cookies.get('token');
   const userId = Cookies.get('userId');
-  const balance = Cookies.get('amount');
-  const recentDeposit = Cookies.get('recentDeposit');
+  const balance = localStorage.getItem('amount');
+  const recentDeposit = localStorage.getItem('recentDeposit');
 
 
   const showPackages = async () => {

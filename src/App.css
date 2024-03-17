@@ -80,7 +80,7 @@ input {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-
+  width: 13rem;
   height: 100%;
   position: fixed;
 }
@@ -107,7 +107,7 @@ input {
 
 
 .user-navbar-menu-links li a {
-
+  width: 100%;
   padding: .5rem;
   color: var(--tertiary-color);
   display: flex;
@@ -117,6 +117,7 @@ input {
 }
 
 .user-navbar a.active {
+  width: 100%;
   background: var(--primary-color-md);
 }
 

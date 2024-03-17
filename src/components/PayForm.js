@@ -30,12 +30,12 @@ const PaystackDepositForm = () => {
                     setAmount("");
                     setEmail("");
 
-                    Cookies.set("reference", transaction.reference);
-                    Cookies.set("recentDeposit", amount)
-                    const currentBalance = parseFloat(Cookies.get('amount') || 0);
+                    localStorage.setItem("reference", transaction.reference);
+                    localStorage.setItem("recentDeposit", amount)
+                    const currentBalance = parseFloat(localStorage.getItem('amount') || 0);
                     const newBalance = currentBalance + parseFloat(amount);
-                    Cookies.set(`amount`, newBalance);
-                    Cookies.set("email", email);
+                    localStorage.setItem(`amount`, newBalance);
+                    localStorage.setItem("email", email);
                     console.log(transaction);
 
                 },
@@ -52,12 +52,18 @@ const PaystackDepositForm = () => {
             <form class="pay-form">
             <div>
             <label>Amount:</label>
-            <input type="number" value={amount} onChange={handleAmountChange} />
+            <input type="number" value={amount} onChange={handleAmountChange}
+             placeholder='Ex. 5680'
+             required
+            />
             </div>
             <br />
             <div>
             <label>Email:</label>
-            <input type="email" value={email} onChange={handleEmailChange} />
+            <input type="email" value={email} onChange={handleEmailChange} 
+             placeholder='Your email address' 
+             required
+            />
             </div>
             <br />
             <div>

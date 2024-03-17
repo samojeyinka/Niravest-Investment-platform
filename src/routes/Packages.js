@@ -18,7 +18,7 @@ const Packages = () => {
 
   const isLoggedIn = Cookies.get('token');
   const userId = Cookies.get('userId');
-  const balance = Cookies.get('amount');
+  const balance = localStorage.getItem('amount');
   console.log(balance);
 
   const showPackages = async () => {
@@ -68,7 +68,7 @@ const Packages = () => {
 
         // Deduct package price from balance
         const newBalance = parseFloat(balance) - parseFloat(packagePrice);
-        Cookies.set('amount', newBalance);
+        localStorage.setItem('amount', newBalance);
 
         // Store package ID in local storage
         let updatedActivatedPackages = [...activatedPackages, packageId];

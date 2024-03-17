@@ -24,6 +24,7 @@
     "react-paystack": "^5.0.0",
     "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
+    "sweetalert2": "^11.10.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

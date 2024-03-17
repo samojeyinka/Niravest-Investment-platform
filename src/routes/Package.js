@@ -6,6 +6,7 @@ import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 import { dmd } from '../assets/assets';
 import numberFormat from "../components/NumberFormatter";
+import { useNavigate } from 'react-router-dom';
 
 const Package = () => {
 
@@ -14,6 +15,7 @@ const Package = () => {
     const [totalProfits, setTotalProfits] = useState("");
     const [dailyProfits, setDailyProfits] = useState("");
     const [duration, setDuration] = useState("");
+    const navigate = useNavigate();
 
     const [pId, setPId] = useState("");
 
@@ -23,6 +25,7 @@ const Package = () => {
 
     const isLoggedIn = Cookies.get('token');
     const userId = Cookies.get('userId');
+    const balance = localStorage.getItem('amount');
 
 
 
@@ -132,6 +135,29 @@ const Package = () => {
     }, [id, duration]);
 
 
+    const handleCashout = async(packageTP) => {
+        const newBalance = parseFloat(balance) + parseFloat(packageTP);
+        localStorage.setItem('amount', newBalance);
+        try {
+            const token = Cookies.get('token');
+            await axios.delete(`http://localhost:3000/users/${userId}/packages/${id}`,
+              {
+                headers: {
+                  Authorization: `${token}`
+                }
+              });
+
+              const activatedPackages = JSON.parse(localStorage.getItem('activatedPackages')) || [];
+              const updatedActivatedPackages = activatedPackages.filter(packageId => packageId !== parseInt(id));
+              localStorage.setItem('activatedPackages', JSON.stringify(updatedActivatedPackages));
+            alert("Cashed out successfully");
+            navigate("/overview");
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
 
     useEffect(() => {
         showPackage();
@@ -213,10 +239,10 @@ const Package = () => {
                                 </div>
                                 <div className='pc-keypoints'>
                                     <div className='pc-keypoints-left'>
-                                        <div><span>Accumulates[24H]: </span><b className='money-accumulates'>{numberFormat(accumulatedProfits)}</b></div>
+                                        <div><span>Accumulates[24H]: </span><b className='money-accumulates'>{canWithdraw ? numberFormat(totalProfits) :numberFormat(accumulatedProfits)}</b></div>
                                         <div><span>Activated on: </span><b className='date-activated'>{dateActivated}</b></div>
                                         <div><span>Expires on: </span><b className='date-activated'>{expirationDate}</b></div>
-                                        {canWithdraw ? <div><button className='withdraw-btn'>Withdraw</button></div> : <div><button disabled className='withdraw-btn disabled' >Withdrawal not available</button></div>}
+                                        {canWithdraw ? <div><button className='withdraw-btn' onClick={() =>  handleCashout(totalProfits)}>Cashout</button></div> : <div><button disabled className='withdraw-btn disabled' >Cashout not available</button></div>}
 
                                     </div>
                                     <div className='pc-keypoints-right'>
