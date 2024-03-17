@@ -1,0 +1,101 @@
+
+/* Payment page  */
+
+.payment {
+    padding:1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    /* Set your desired width */
+    height: 96%;
+    background: rgba(19, 23, 19, 0.344);
+    border-radius: var(--border-radius-md);
+  }
+  
+  .d-w-con {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  
+  }
+  
+  .d-w-con div {
+    width: 100%;
+  }
+  
+  .pay-form-con {
+    padding: 2rem 0;
+  }
+  
+  .pay-form-con form {
+    padding: .5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+  
+  .pay-form-con form div {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+  }
+  
+  .pay-form-con form input {
+    padding: 1rem;
+    background: var(--primary-color-md);
+    border-radius: var(--border-radius-md);
+    color: var(--tertiary-color);
+  }
+  
+  .pay-form-con form label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--tertiary-color);
+  }
+  
+  .pay-form-con form button {
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-md);
+    color: var(--tertiary-color);
+  }
+  
+  
+  
+  @media screen and (max-width: 1200px) {
+    .payment {
+      padding: 1rem;
+      position: relative;
+      top: 0%;
+      left: 0%;
+      transform: translate(-0%, -0%);
+      width: 100%;
+      height: 100%;
+    }
+  
+  }
+  
+  @media screen and (max-width: 760px) {
+    .payment {
+      padding: 1rem;
+      position: relative;
+      top: 0%;
+      left: 0%;
+      transform: translate(-0%, -0%);
+      width: 100%;
+      height: 100%;
+    }
+  
+  
+    .d-w-con {
+      flex-direction: column;
+      gap: 0rem;
+  
+    }
+  }

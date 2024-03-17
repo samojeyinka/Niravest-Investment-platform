@@ -5,10 +5,9 @@ import axios from 'axios';
 import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
-import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine,FaStamp } from 'react-icons/fa';
+import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine, FaStamp } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { NumericFormat } from 'react-number-format';
-import numberFormat from '../components/NumberFormatter';
+import numberFormat from '../utils/NumberFormatter';
 import AdminNav from './AdminNav';
 import Unauthorized from '../utils/Unauthorized';
 
@@ -17,6 +16,8 @@ const Dashboard = () => {
   const [packages, setPackages] = useState([]);
 
 
+
+  // Fetch packages from API endpoint
   const showPackages = async () => {
     try {
       const token = Cookies.get('adminToken');
@@ -36,37 +37,42 @@ const Dashboard = () => {
     }
   }
 
+
+  // Function that transform first letter or word to uppercase
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  const handleDeletePackage = async(packageId) => {
-      try {
-        const token = Cookies.get('adminToken');
-        axios.delete(`http://localhost:3000/packages/${packageId}`,{
-          headers: {
-            Authorization: `${token}`
-          }
-        })
-        showPackages();
-        alert(`Successfully deleted ${packageId}`)
-      } catch (error) {
-        alert("Unable to delete package")
-        console.log(error)
-      }
+
+  // Function to delete package
+  const handleDeletePackage = async (packageId) => {
+    try {
+      const token = Cookies.get('adminToken');
+      axios.delete(`http://localhost:3000/packages/${packageId}`, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      showPackages();
+      alert(`Successfully deleted ${packageId}`)
+    } catch (error) {
+      alert("Unable to delete package")
+      console.log(error)
+    }
   }
 
-useEffect(() => {
-  showPackages();
-})
+  useEffect(() => {
+    showPackages();
+  })
+
 
   return (
     <div>
 
-      {adminLoggedIn ? 
-      
+      {adminLoggedIn ?
+
         <section className='user'>
-          <AdminNav/>
+          <AdminNav />
           <main className='user-main'>
             {packages.length === 0 ? (<div className='empty-watchlist'>
 
@@ -101,9 +107,9 @@ useEffect(() => {
                         </div>
                         <div className='p-btns'>
 
-                        <i className='trash-package' title='Trash this package' onClick={() => handleDeletePackage(pkg.id)}><FaTrash /></i>
-                        <Link to={`/admin/package/edit?id=${pkg.id}`}><button className='admin-package-update-btn'>Edit</button></Link>
-                        
+                          <i className='trash-package' title='Trash this package' onClick={() => handleDeletePackage(pkg.id)}><FaTrash /></i>
+                          <Link to={`/admin/package/edit?id=${pkg.id}`}><button className='admin-package-update-btn'>Edit</button></Link>
+
                         </div>
 
 
@@ -123,8 +129,8 @@ useEffect(() => {
           </main>
         </section>
         :
-        
-       <Unauthorized/>
+
+        <Unauthorized />
 
       }
 

@@ -1,4 +1,4 @@
-import { useRef, useState} from "react";
+import { useRef, useState } from "react";
 import '../stylesheets/Sign.css'
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ const Signup = () => {
     const navigate = useNavigate()
     const [showPasssword, setShowPassword] = useState(false);
     const [isValid, setIsValid] = useState();
-    
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -31,12 +31,12 @@ const Signup = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
- 
-    const handleSubmit = async(e) => {
-         e.preventDefault()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         try {
-            const response = await axios.post("http://localhost:3000/signup",{"user":formData})
-        
+            const response = await axios.post("http://localhost:3000/signup", { "user": formData })
+
             if (response.status === 200) {
                 console.log('Sign up successful!!');
                 console.log(response)
@@ -48,11 +48,12 @@ const Signup = () => {
                 console.log(userId)
                 navigate(`/overview`);
 
-       } } catch (error) {
-            console.error(error);   
+            }
+        } catch (error) {
+            console.error(error);
         }
-       
-        
+
+
     }
 
     const handleClick = e => {
@@ -65,47 +66,47 @@ const Signup = () => {
     }
 
     return (
-<>
-        <main className='auth'>
-            <h1>Hello!
-                <br /> Join Us Today</h1>
+        <>
+            <main className='auth'>
+                <h1>Hello!
+                    <br /> Join Us Today</h1>
 
-            <form className='auth__form' onSubmit={handleSubmit}>
-                <div className='auth__input_box'>
-                    <label>Email</label>
-                    <span>
-                        <i className='auth__icon'><FaEnvelope /></i>
-                        <input type='email'
-                            name='email'
-                            placeholder='Enter Your Email'
-                            onChange={handleChange}
-                        />
-                    </span>
-                </div>
-                <br /><br />
-                <div className='auth__input_box'>
-                    <label>Password</label>
-                    <span>
-                        <i className='auth__icon'><FaLock /></i>
-                        <input type={showPasssword ? 'text' : 'password'}
-                            placeholder='Enter Your Password'
-                            name='password'
-                            onChange={handleChange}
+                <form className='auth__form' onSubmit={handleSubmit}>
+                    <div className='auth__input_box'>
+                        <label>Email</label>
+                        <span>
+                            <i className='auth__icon'><FaEnvelope /></i>
+                            <input type='email'
+                                name='email'
+                                placeholder='Enter Your Email'
+                                onChange={handleChange}
+                            />
+                        </span>
+                    </div>
+                    <br /><br />
+                    <div className='auth__input_box'>
+                        <label>Password</label>
+                        <span>
+                            <i className='auth__icon'><FaLock /></i>
+                            <input type={showPasssword ? 'text' : 'password'}
+                                placeholder='Enter Your Password'
+                                name='password'
+                                onChange={handleChange}
 
-                        />
-                        <i className='auth__icon' onClick={handlePasswordVisibility}>{showPasssword ? <FaEyeSlash /> : <FaEye />}</i>
-                    </span>
-                </div>
-                <button type='submit' className='auth__btn'>Sign Up</button>
+                            />
+                            <i className='auth__icon' onClick={handlePasswordVisibility}>{showPasssword ? <FaEyeSlash /> : <FaEye />}</i>
+                        </span>
+                    </div>
+                    <button type='submit' className='auth__btn'>Sign Up</button>
 
-            </form>
+                </form>
 
 
-            <p className='account-condition'>Already have an account?  <Link to={'/signin'}  >Sign In</Link></p>
-        </main>
-        <Footer/>
+                <p className='account-condition'>Already have an account?  <Link to={'/signin'}  >Sign In</Link></p>
+            </main>
+            <Footer />
 
-</>
+        </>
 
     )
 }

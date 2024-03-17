@@ -1,0 +1,206 @@
+
+
+/* Package show */
+
+
+.package-parent {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .package-con {
+    padding: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    /* Set your desired width */
+    height: 90%;
+    background: rgba(19, 23, 19, 0.344);
+    border-radius: var(--border-radius-md);
+  }
+  
+  
+  .pc-flex {
+    display: flex;
+  }
+  
+  .pc-flex-left {
+    width: 60%;
+    background: #fff;
+  
+  }
+  
+  .pc-flex-right {
+    padding: 0 1rem;
+    width: 40%;
+    position: relative;
+  }
+  
+  .pc-flex-right::before {
+    content: '';
+    height: 100%;
+    width: 1px;
+    background: var(--secondary-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .pc-flex-right .package-box {
+    height: 100%;
+    border: none;
+  }
+  
+  .pc-flex-right .package-box h2 {
+    padding: .6rem 0;
+    font-size: 2rem;
+    text-align: left;
+  }
+  
+  
+  .pc-flex-right .package-box b {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  .pc-flex-right .p-box-details-left,
+  .pc-flex-right .p-box-details-right {
+    gap: 2rem;
+  }
+  
+  .pc-keypoints {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--tertiary-color);
+  }
+  
+  .pc-keypoints-left {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .pc-keypoints-right {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: auto;
+  }
+  
+  
+  .pc-keypoints-left span {
+    font-size: 1.2rem;
+    color: var(--tertiary-color);
+  }
+  
+  .pc-keypoints-left b {
+  
+    color: var(--secondary-color);
+  }
+  
+  
+  .withdraw-btn {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: .7rem 1rem;
+    background: var(--secondary-color);
+    border-radius: var(--border-radius-md);
+    transition: .3s ease-in-out;
+  }
+  
+  .withdraw-btn.disabled {
+    opacity: .6;
+  }
+  
+  .withdraw-btn.disabled:hover {
+    background: var(--secondary-color);
+    color: var(--tertiary-color);
+  }
+  
+  .withdraw-btn:hover {
+    background: var(--tertiary-color);
+    color: var(--primary-color);
+  }
+  
+  
+  .pc-keypoints-right h4 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    text-decoration: underline;
+  }
+  
+  .pc-keypoints-right p {
+    opacity: .9;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .package-con {
+      margin: auto;
+      position: relative;
+      top: 0;
+      left: 00%;
+      transform: translate(0%, 0%);
+      width: 96%;
+      /* Set your desired width */
+      height: 100%;
+    }
+  
+  
+    .pc-flex {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+  
+  
+    .pc-flex-right,
+    .pc-flex-left {
+      padding: 0;
+      width: 100%;
+    }
+  
+  
+    .pc-flex-right::before {
+      display: none;
+    }
+  
+    .pc-keypoints {
+      gap: 2rem;
+    }
+  
+    .pc-keypoints {
+      flex-direction: column;
+    }
+  
+    .pc-keypoints-left {
+      width: 100%;
+    }
+  
+    .pc-keypoints-right {
+      width: 100%;
+  
+    }
+  
+  }
+  
+  @media screen and (max-width: 300px) {
+    .user-nav {
+      display: none;
+    }
+  
+    .package-con {
+      width: 100%;
+    }
+  }
+  

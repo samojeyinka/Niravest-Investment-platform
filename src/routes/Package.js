@@ -5,9 +5,10 @@ import axios from 'axios';
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 import { dmd } from '../assets/assets';
-import numberFormat from "../components/NumberFormatter";
+import numberFormat from '../utils/NumberFormatter';
 import { useNavigate } from 'react-router-dom';
 import Unauthorized from '../utils/Unauthorized';
+import '../stylesheets/user/Package.css'
 
 const Package = () => {
 
@@ -136,21 +137,21 @@ const Package = () => {
     }, [id, duration]);
 
 
-    const handleCashout = async(packageTP) => {
+    const handleCashout = async (packageTP) => {
         const newBalance = parseFloat(balance) + parseFloat(packageTP);
         localStorage.setItem('amount', newBalance);
         try {
             const token = Cookies.get('token');
             await axios.delete(`http://localhost:3000/users/${userId}/packages/${id}`,
-              {
-                headers: {
-                  Authorization: `${token}`
-                }
-              });
+                {
+                    headers: {
+                        Authorization: `${token}`
+                    }
+                });
 
-              const activatedPackages = JSON.parse(localStorage.getItem('activatedPackages')) || [];
-              const updatedActivatedPackages = activatedPackages.filter(packageId => packageId !== parseInt(id));
-              localStorage.setItem('activatedPackages', JSON.stringify(updatedActivatedPackages));
+            const activatedPackages = JSON.parse(localStorage.getItem('activatedPackages')) || [];
+            const updatedActivatedPackages = activatedPackages.filter(packageId => packageId !== parseInt(id));
+            localStorage.setItem('activatedPackages', JSON.stringify(updatedActivatedPackages));
             alert("Cashed out successfully");
             navigate("/overview");
 
@@ -240,10 +241,10 @@ const Package = () => {
                                 </div>
                                 <div className='pc-keypoints'>
                                     <div className='pc-keypoints-left'>
-                                        <div><span>Accumulates[24H]: </span><b className='money-accumulates'>{canWithdraw ? numberFormat(totalProfits) :numberFormat(accumulatedProfits)}</b></div>
+                                        <div><span>Accumulates[24H]: </span><b className='money-accumulates'>{canWithdraw ? numberFormat(totalProfits) : numberFormat(accumulatedProfits)}</b></div>
                                         <div><span>Activated on: </span><b className='date-activated'>{dateActivated}</b></div>
                                         <div><span>Expires on: </span><b className='date-activated'>{expirationDate}</b></div>
-                                        {canWithdraw ? <div><button className='withdraw-btn' onClick={() =>  handleCashout(totalProfits)}>Cashout</button></div> : <div><button disabled className='withdraw-btn disabled' >Cashout not available</button></div>}
+                                        {canWithdraw ? <div><button className='withdraw-btn' onClick={() => handleCashout(totalProfits)}>Cashout</button></div> : <div><button disabled className='withdraw-btn disabled' >Cashout not available</button></div>}
 
                                     </div>
                                     <div className='pc-keypoints-right'>
@@ -265,7 +266,7 @@ const Package = () => {
                     </main>
                 </section>
                 :
-                <Unauthorized/>
+                <Unauthorized />
 
             }
 

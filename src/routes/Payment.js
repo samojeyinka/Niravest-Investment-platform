@@ -1,11 +1,12 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 import UserNav from '../components/UserNav';
-import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine } from 'react-icons/fa';
-import numberFormat from '../components/NumberFormatter';
+import {  FaChartBar, FaChartArea} from 'react-icons/fa';
+import numberFormat from '../utils/NumberFormatter';
 import PaystackDepositForm from '../components/PayForm';
 import WithdrawalForm from '../components/WithdrawalForm';
-import Unauthorized from '../utils/Unauthorized'
+import Unauthorized from '../utils/Unauthorized';
+import '../stylesheets/user/Payment.css'
 
 const Payment = () => {
   const isLoggedIn = Cookies.get('token');

@@ -1,75 +1,80 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaCheck, FaTimes } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
 const Login = () => {
-    const [showPasssword, setShowPassword] = useState(false);
-    const [isValid, setIsValid] = useState();
-    const navigate = useNavigate();
+  const [showPasssword, setShowPassword] = useState(false);
+  const [isValid, setIsValid] = useState();
+  const navigate = useNavigate();
 
 
-      
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-});
+  });
 
-const handleChange = (e) => {
+
+  // Function that check for valid email
+
+  const handleChange = (e) => {
     e.preventDefault();
     const inputValue = e.target.value;
 
     if (e.target.name === 'email') {
-        const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-        const isValidEmail = emailPattern.test(inputValue);
-        setIsValid(isValidEmail);
+      const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+      const isValidEmail = emailPattern.test(inputValue);
+      setIsValid(isValidEmail);
     }
 
     setFormData({ ...formData, [e.target.name]: e.target.value });
-}
+  }
 
 
-  
 
-    const handlePasswordVisibility = () => {
-        setShowPassword(!showPasssword);
+  // Function to toggling of password visibility
+  const handlePasswordVisibility = () => {
+    setShowPassword(!showPasssword);
+  }
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+
+      if (email.value == "sam@gmail.com" && password.value == "password") {
+        const response = await axios.post("http://localhost:3000/login", { "user": formData })
+
+
+        const adminToken = response.headers.get("Authorization");
+        console.log(adminToken)
+        Cookies.set('adminToken', adminToken);
+        const adminEmail = response.data.data.email;
+        Cookies.set('adminEmail', adminEmail);
+
+        navigate(`/admin/dashboard`);
+      } else {
+        alert("Wrong login credentials. Please try again");
       }
 
-      const handleSubmit = async(e) => {
-        e.preventDefault()
-          try {
-            const email = document.getElementById('email');
-            const password = document.getElementById('password');
-              
-            if(email.value == "sam@gmail.com" && password.value == "password") {
-            const response = await axios.post("http://localhost:3000/login",{"user":formData})
-          
-                 
-                  const adminToken = response.headers.get("Authorization");
-                  console.log(adminToken)
-                  Cookies.set('adminToken', adminToken);
-                  const adminEmail = response.data.data.email;
-                  Cookies.set('adminEmail', adminEmail);
-                
-                  navigate(`/admin/dashboard`);
-            } else{
-              alert("Wrong login credentials. Please try again");
-            }
-    
-          } catch (error) {
-      
-              console.error(error);   
-          }
-    
-          }
+    } catch (error) {
+
+      console.error(error);
+    }
+
+  }
 
   return (
     <section className='admin-login'>
-        <div className='admin-login-con'>
-                <h3>Login as Admin</h3>
-               
-                <form className='auth__form' onSubmit={handleSubmit}>
+      <div className='admin-login-con'>
+        <h3>Login as Admin</h3>
+
+        <form className='auth__form' onSubmit={handleSubmit}>
           <div className='auth__input_box'>
             <label>Email</label>
             <span>
@@ -103,7 +108,7 @@ const handleChange = (e) => {
         </form>
 
 
-        </div>
+      </div>
     </section>
   )
 }

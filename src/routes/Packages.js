@@ -5,7 +5,7 @@ import axios from 'axios';
 import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
-import numberFormat from "../components/NumberFormatter"
+import numberFormat from '../utils/NumberFormatter';
 import Unauthorized from '../utils/Unauthorized';
 
 
@@ -76,9 +76,9 @@ const Packages = () => {
         let updatedActivatedPackages = [...activatedPackages, packageId];
         localStorage.setItem('activatedPackages', JSON.stringify(updatedActivatedPackages));
 
-          // Store activation date for the package
-    let activationDate = new Date().toISOString();
-    localStorage.setItem(`activationDate-${packageId}`, activationDate);
+        // Store activation date for the package
+        let activationDate = new Date().toISOString();
+        localStorage.setItem(`activationDate-${packageId}`, activationDate);
 
         const updatedPackages = packages.map(pkg => {
           if (pkg.id === packageId) {
@@ -184,7 +184,7 @@ const Packages = () => {
           </main>
         </section>
         :
-        <Unauthorized/>
+        <Unauthorized />
 
       }
 

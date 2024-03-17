@@ -38,7 +38,6 @@ function App() {
         <Route path='/account'  element={<Account />} />
         <Route path='/package'  element={<Package />} />
         <Route path='/services'  element={<Services/>} />
-        <Route path='/pay'  element={<PaystackDepositForm />} />
        {/* Admin routes */}
         <Route path='/admin/login' element={<AdminLogin />} />
         <Route path='/admin/dashboard' element={<Dashboard/>} />

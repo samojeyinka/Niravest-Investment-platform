@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import UserNav from '../components/UserNav';
 import axios, { all } from 'axios';
-import { dmd } from '../assets/assets';
-import { Link } from 'react-router-dom';
-import '../stylesheets/Packages.css';
-import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine, FaStamp } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import { NumericFormat } from 'react-number-format';
-import numberFormat from '../components/NumberFormatter';
 import AdminNav from './AdminNav';
 import FormatDate from '../utils/FormatDate'
 import Unauthorized from '../utils/Unauthorized';
@@ -30,7 +22,7 @@ const Users = () => {
     }
   }
 
-  const handleDeleteUser = async(userId) => {
+  const handleDeleteUser = async (userId) => {
     try {
       await axios.delete(`http://localhost:3000/users/${userId}`);
       alert("User successfully deleted");
@@ -86,7 +78,7 @@ const Users = () => {
         </section>
         :
 
-       <Unauthorized/>
+        <Unauthorized />
 
       }
 

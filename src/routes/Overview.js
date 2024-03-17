@@ -5,11 +5,11 @@ import axios from 'axios';
 import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
-import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine,FaStamp } from 'react-icons/fa';
+import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine, FaStamp } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { NumericFormat } from 'react-number-format';
-import numberFormat from '../components/NumberFormatter';
+import numberFormat from '../utils/NumberFormatter';
 import Unauthorized from '../utils/Unauthorized';
+import '../stylesheets/user/Overview.css'
 
 const Overview = () => {
 
@@ -38,10 +38,10 @@ const Overview = () => {
       const packages = response.data
 
 
-      const totalPrice = packages.reduce((acc,pkg) => acc + parseInt(pkg.price),0);
+      const totalPrice = packages.reduce((acc, pkg) => acc + parseInt(pkg.price), 0);
       setTotalPackagePrice(totalPrice)
 
-      const estimateProfits = packages.reduce((acc,pkg) => acc + parseInt(pkg.total_profits),0);
+      const estimateProfits = packages.reduce((acc, pkg) => acc + parseInt(pkg.total_profits), 0);
       setEstimatedProfits(estimateProfits);
 
 
@@ -83,7 +83,7 @@ const Overview = () => {
     navigate(`/package?id=${currentPackageId}`);
   }
 
-  
+
 
 
 
@@ -113,7 +113,7 @@ const Overview = () => {
                   </div>
                   <div className='stat-box-btm'>
                     <b>{numberFormat(balance || 0)}</b>
-                    
+
                   </div>
                 </div>
                 <div className='stat-box'>
@@ -219,7 +219,7 @@ const Overview = () => {
           </main>
         </section>
         :
-        <Unauthorized/>
+        <Unauthorized />
 
       }
 
