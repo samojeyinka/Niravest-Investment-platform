@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import '../stylesheets/Header.css'
 import {FaAngleDown} from 'react-icons/fa'
 import Cookies from 'js-cookie';
+import Swal from 'sweetalert2'
 
 
 
@@ -66,6 +67,17 @@ const Header = () => {
         return null; // Do not render header if user is logged in or if route includes '/admin/'
     }
   
+    const handleApp =async () => {
+        const { value: email } = await Swal.fire({
+            title: "Join mobile app waitlist", 
+            input: "email",
+            inputLabel: "Your email address",
+            inputPlaceholder: "Enter your email address"
+          });
+          if (email) {
+            Swal.fire(`Success!`);
+          }
+    }
 
     return (
 <section>
@@ -173,7 +185,7 @@ const Header = () => {
 
                 </div>
                 <div className='navbar_right'>
-                    <button title='Coming soon...'>Download The App</button>
+                    <button title='Coming soon...' onClick={handleApp}>Download The App</button>
                 </div>
             </nav>
 
