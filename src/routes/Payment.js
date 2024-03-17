@@ -5,6 +5,7 @@ import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine } from 'r
 import numberFormat from '../components/NumberFormatter';
 import PaystackDepositForm from '../components/PayForm';
 import WithdrawalForm from '../components/WithdrawalForm';
+import Unauthorized from '../utils/Unauthorized'
 
 const Payment = () => {
   const isLoggedIn = Cookies.get('token');
@@ -66,7 +67,7 @@ const Payment = () => {
       </main>
     </section>
     :
-    <div>sorry</div>
+        <Unauthorized/>
     
 }
 

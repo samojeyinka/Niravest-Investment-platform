@@ -7,6 +7,7 @@ import { Bar, Doughnut, Line } from "react-chartjs-2";
 import { dmd } from '../assets/assets';
 import numberFormat from "../components/NumberFormatter";
 import { useNavigate } from 'react-router-dom';
+import Unauthorized from '../utils/Unauthorized';
 
 const Package = () => {
 
@@ -264,7 +265,7 @@ const Package = () => {
                     </main>
                 </section>
                 :
-                <div>sorry</div>
+                <Unauthorized/>
 
             }
 

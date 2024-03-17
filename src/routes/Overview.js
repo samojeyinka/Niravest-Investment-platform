@@ -9,6 +9,7 @@ import { FaTrash, FaCashRegister, FaChartBar, FaChartArea, FaChartLine,FaStamp }
 import { useNavigate } from 'react-router-dom';
 import { NumericFormat } from 'react-number-format';
 import numberFormat from '../components/NumberFormatter';
+import Unauthorized from '../utils/Unauthorized';
 
 const Overview = () => {
 
@@ -218,7 +219,7 @@ const Overview = () => {
           </main>
         </section>
         :
-        <div>sorry</div>
+        <Unauthorized/>
 
       }
 

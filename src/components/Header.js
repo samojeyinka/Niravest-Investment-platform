@@ -6,6 +6,7 @@ import '../stylesheets/Header.css'
 import {FaAngleDown} from 'react-icons/fa'
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2'
+import axios from 'axios'
 
 
 
@@ -16,6 +17,24 @@ const Header = () => {
     const [dropPackages, setDropPackages] = useState('d1');
     const navigate = useNavigate();
     const location = useLocation();
+    const [packages, setPackages] = useState([]);
+
+useEffect(() => {
+    const showPackages = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3000/package-list`);
+    
+          const packages = response.data
+          setPackages(packages);
+          console.log(response.data)
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      showPackages();
+},[])
+   
 
     const handleClick = () => {
         setClick(!click);
@@ -79,6 +98,12 @@ const Header = () => {
           }
     }
 
+
+    
+ 
+
+
+
     return (
 <section>
 
@@ -135,12 +160,10 @@ const Header = () => {
                         </li>
 
                         <div className={`d-packages ${getPackages('d1')}`}>
-                            <li><Link to='/' onClick={openPage} >Basic Invest</Link> </li>
-                            <li><Link to='/' onClick={openPage}>Smart Invest</Link> </li>
-                            <li><Link to='/' onClick={openPage}>Pro Invest</Link> </li>
-                            <li><Link to='/' onClick={openPage}>Elite Invest</Link> </li>
-                            <li><Link to='/' onClick={openPage}>Prime Invest</Link> </li>
-                            <li><Link to='/' onClick={openPage}>Ultimate Invest</Link> </li>
+
+                            {packages.map(pkg => (
+                            <li><Link to='/signin' onClick={openPage} key={pkg.id}>{pkg.name}</Link> </li>
+))}
                         </div>
 
                         <li className='mobile-only-link'>

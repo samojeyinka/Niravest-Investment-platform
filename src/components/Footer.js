@@ -1,13 +1,31 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import '../stylesheets/Footer.css';
 import { logo } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import { FaTwitter, FaGithub, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
-
+import axios from 'axios';
 
 //The footer section
 
 const Footer = () => {
+
+  const [packages, setPackages] = useState([]);
+
+useEffect(() => {
+  const showPackages = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/package-list`);
+  
+        const packages = response.data
+        setPackages(packages);
+        console.log(response.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    showPackages();
+},[])
 
   return (
     <section className='footer-sec'>
@@ -30,14 +48,9 @@ const Footer = () => {
           <div className='products'>
             <h5 className='text-whit'e>Products</h5>
             <ul>
-              <li><Link to='/' className='text-white'>Basic Invest</Link> </li>
-              <li><Link to='/' className='text-white'>Smart Invest</Link> </li>
-              <li><Link to='/' className='text-white'>Pro Invest</Link> </li>
-              <li><Link to='/' className='text-white'>Elite Invest</Link> </li>
-              <li><Link to='/' className='text-white'>Prime Invest</Link> </li>
-              <li><Link to='/' className='text-white'>Ultimate Invest</Link> </li>
-
-
+            {packages.map((pkg) => (
+              <li><Link to='/' className='text-white'>{pkg.name}</Link> </li>
+              ))}
             </ul>
           </div>
 

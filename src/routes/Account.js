@@ -1,6 +1,7 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 import UserNav from '../components/UserNav';
+import Unauthorized from '../utils/Unauthorized';
 
 const Account = () => {
   const isLoggedIn = Cookies.get('token');
@@ -14,7 +15,7 @@ const Account = () => {
       </main>
     </section>
     :
-    <div>sorry</div>
+    <Unauthorized/>
     
 }
 

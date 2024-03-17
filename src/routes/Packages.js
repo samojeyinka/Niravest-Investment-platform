@@ -6,6 +6,7 @@ import { dmd } from '../assets/assets';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Packages.css';
 import numberFormat from "../components/NumberFormatter"
+import Unauthorized from '../utils/Unauthorized';
 
 
 const Packages = () => {
@@ -182,7 +183,7 @@ const Packages = () => {
           </main>
         </section>
         :
-        <div>sorry</div>
+        <Unauthorized/>
 
       }
 
