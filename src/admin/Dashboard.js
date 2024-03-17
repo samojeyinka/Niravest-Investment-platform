@@ -71,7 +71,7 @@ useEffect(() => {
 
               <p>Sorry! There are no packages.</p>
             </div>) :
-              (<div className='packages-grid'>
+              (<div className='packages-grid admin'>
                 {packages.map((pkg) => (
                   <div className='package-box' key={pkg.id}>
                     <div className='p-box-top'>

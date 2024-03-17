@@ -4,7 +4,7 @@ import { Link,NavLink,useNavigate } from 'react-router-dom';
 import {FaHome,FaWallet,FaRegMoneyBillAlt,FaUser,FaSignOutAlt,FaHeart} from 'react-icons/fa'
 import { logo } from '../assets/assets';
 import axios from 'axios';
-
+import '../stylesheets/user/Navbar.css'
 const UserNav = () => {
 
   const [userEmail,setUserEmail] = useState("");
@@ -35,6 +35,7 @@ const UserNav = () => {
 
     
   return (
+    <>
      <nav className='user-nav'>
             <div className='user-navbar'>
             <div className='user-navbar-top'>
@@ -76,7 +77,7 @@ const UserNav = () => {
                       </NavLink>
                     </li>
 
-                    <li>
+                    <li className='u-email'>
                       <Link>
                       <i className='umml-icon'>
                         <FaUser/>
@@ -99,6 +100,71 @@ const UserNav = () => {
                 </ul>
               </div>
           </nav>
+          {/* Mobile nav */}
+          
+                <div className="mobile-user-nav">
+                <div className='user-navbar-top'>
+                    <img src={logo} className='logo_img' />
+                    <span className='logo_txt'>niravest</span>
+                </div>
+                <ul className='user-navbar-menu-links-mobile'>
+                    <li>
+                      <NavLink to={"/overview"}>
+                      <i className='umml-icon'>
+                        <FaHome/>
+                      </i>
+                      <span>
+                        Overview
+                      </span>
+                      </NavLink>
+                    </li>
+
+                    <li>
+                      <NavLink to={"/payment"}>
+                      <i className='umml-icon'>
+                        <FaWallet/>
+                      </i>
+                      <span>
+                        Payment
+                      </span>
+                      </NavLink>
+                    </li>
+
+                    <li>
+                      <NavLink to={"/packages"}>
+                      <i className='umml-icon'>
+                        <FaRegMoneyBillAlt/>
+                      </i>
+                      <span>
+                        Packages
+                      </span>
+                      </NavLink>
+                    </li>
+
+                    <li className='u-email'>
+                      <Link>
+                      <i className='umml-icon'>
+                        <FaUser/>
+                      </i>
+                      <span>
+                        {userEmail}
+                      </span>
+                      </Link>
+                    </li>
+                    <li className='u-logout'>
+                      <Link to={'/'} onClick={handleLogOut}>
+                      <i className='umml-icon'>
+                        <FaSignOutAlt/>
+                      </i>
+                      <span>
+                        Logout
+                      </span>
+                      </Link>
+                    </li>
+                </ul>
+                </div>
+
+        </>  
           
   )
   }

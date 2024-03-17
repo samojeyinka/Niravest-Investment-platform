@@ -14,6 +14,7 @@ const AdminNav = () => {
  
     const handleLogOut = () => {
       Cookies.remove('adminToken');
+      Cookies.remove('adminEmail');
     }
 
 

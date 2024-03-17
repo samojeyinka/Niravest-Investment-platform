@@ -50,7 +50,7 @@ const handleChange = (e) => {
                   console.log(adminToken)
                   Cookies.set('adminToken', adminToken);
                   const adminEmail = response.data.data.email;
-                  Cookies.set('admin', adminEmail);
+                  Cookies.set('adminEmail', adminEmail);
                 
                   navigate(`/admin/dashboard`);
             } else{

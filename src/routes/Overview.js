@@ -91,7 +91,7 @@ const Overview = () => {
   }, [])
 
   return (
-    <div>
+    <div className='overview'>
       {isLoggedIn ?
         <section className='user'>
           <UserNav />

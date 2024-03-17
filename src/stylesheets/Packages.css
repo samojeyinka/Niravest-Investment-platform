@@ -1,9 +1,11 @@
 .packages-grid {
+    padding: 1rem 0;
     margin: auto;
     width: 96%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+
   }
   
   .package-box {
@@ -117,21 +119,35 @@
     color:blue;
   }
 
-  @media screen  and (max-width: 1000px) {
+
+  
+  @media screen  and (max-width: 1100px) {
     .packages-grid {
       grid-template-columns: repeat(2,1fr);
-
     }
   }
 
   @media screen  and (max-width: 768px) {
     .packages-grid {
       grid-template-columns: 1fr;
-
+      
     }
 
     .p-box-btm-right button {
       font-size: 1rem;
  
+    }
+  }
+
+
+  @media screen and (max-width: 300px) {
+    .packages-grid {
+      width: 100%; 
+    }
+    
+
+    .package-box {
+      margin: auto;
+      width: 98%;
     }
   }
