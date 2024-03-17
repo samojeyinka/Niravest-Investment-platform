@@ -22,6 +22,7 @@ const AdminNav = () => {
 
     
   return (
+    <>
      <nav className='user-nav'>
             <div className='user-navbar'>
             <div className='user-navbar-top'>
@@ -87,7 +88,72 @@ const AdminNav = () => {
                 </ul>
               </div>
           </nav>
+           {/* Mobile nav */}
           
+           <div className="mobile-user-nav">
+                <div className='user-navbar-top'>
+                    <img src={logo} className='logo_img' />
+                    <span className='logo_txt'>niravest</span>
+                </div>
+                
+                <ul className='user-navbar-menu-links-mobile'>
+
+                    <li>
+                      <NavLink to={"/admin/dashboard"}>
+                      <i className='umml-icon'>
+                        <FaRegMoneyBillAlt/>
+                      </i>
+                      <span>
+                        Packages
+                      </span>
+                      </NavLink>
+                    </li>
+
+                    <li>
+                      <NavLink to={"/admin/package/new"}>
+                      <i className='umml-icon'>
+                        <FaPlus/>
+                      </i>
+                      <span>
+                        New Package
+                      </span>
+                      </NavLink>
+                    </li>
+
+                    <li>
+                      <NavLink to={"/admin/users"}>
+                      <i className='umml-icon'>
+                        <FaUsers/>
+                      </i>
+                      <span>
+                        Users
+                      </span>
+                      </NavLink>
+                    </li>
+
+                    <li className='u-email'>
+                      <Link>
+                      <i className='umml-icon'>
+                        <FaUser/>
+                      </i>
+                      <span>
+                        {adminEmail}
+                      </span>
+                      </Link>
+                    </li>
+                    <li className='u-logout'>
+                      <Link to={'/'} onClick={handleLogOut}>
+                      <i className='umml-icon'>
+                        <FaSignOutAlt/>
+                      </i>
+                      <span>
+                        Logout
+                      </span>
+                      </Link>
+                    </li>
+                </ul>
+                </div>
+          </>
   )
   }
 

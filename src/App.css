@@ -562,6 +562,25 @@ input {
   border-radius: var(--border-radius-md);
 }
 
+@media screen and (max-width: 1000px){
+
+  .pkg-form-con {
+    padding: 2rem 0;
+  }
+  .pkg-form-con form {
+    width: 80%;
+    height: 100%;
+  }
+}
+
+
+@media screen and (max-width: 768px){
+
+
+  .pkg-form-con form {
+    width: 90%;
+  }
+}
 /* Users styles */
 
 
@@ -570,6 +589,7 @@ input {
   margin: auto;
   width: 80%;
   background: rgba(19, 23, 19, 0.344);
+  overflow: auto !important;
 }
 
 
@@ -605,4 +625,18 @@ input {
 
 .users-table-con table .delete-user:hover{
   transform: scale(1.1);
+}
+
+
+@media screen and (max-width:768px) {
+  
+.users-table-con{
+  width: 95%;
+
+}
+
+
+.users-table-con table{
+ 
+}
 }
