@@ -5,6 +5,8 @@ import Cookies from 'js-cookie';
 const PaystackDepositForm = () => {
     const [amount, setAmount] = useState('');
     const [email, setEmail] = useState('');
+
+    const userEmail = Cookies.get("userEmail");
  
     const handleAmountChange = (e) => {
         setAmount(e.target.value);
@@ -61,7 +63,7 @@ const PaystackDepositForm = () => {
             <div>
             <label>Email:</label>
             <input type="email" value={email} onChange={handleEmailChange} 
-             placeholder='Your email address' 
+             placeholder={userEmail} 
              required
             />
             </div>
