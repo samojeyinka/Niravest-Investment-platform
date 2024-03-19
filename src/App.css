@@ -313,3 +313,33 @@ input {
   font-size: 1rem;
   color: var(--tertiary-color);
 }
+
+/* Page not found */
+
+.page-not-found{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+  text-align: center;
+  color: var(--tertiary-color);
+}
+
+.page-not-found h2{
+  font-size: 5rem;
+}
+
+.page-not-found h3{
+  font-size: 2rem;
+}
+
+
+.page-not-found button{
+  margin-top: 1rem;
+  padding: .6rem 2rem;
+  color: var(--secondary-color);
+    background: var(--tertiary-color);
+    border-radius: var(--border-radius-md);
+}
+

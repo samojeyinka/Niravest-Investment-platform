@@ -18,6 +18,7 @@ import Dashboard from './admin/Dashboard.js';
 import Users from './admin/Users.js';
 import EditPackage from './admin/EditPackage.js';
 import NewPackage from './admin/NewPackage.js';
+import PageNotFound from './routes/PageNotFound.js';
 function App() {
 
   return (
@@ -42,6 +43,11 @@ function App() {
         <Route path='/admin/users' element={<Users/>} />
         <Route path='/admin/package/edit' element={<EditPackage/>} />
         <Route path='/admin/package/new' element={<NewPackage/>} />
+      
+      {/* 404 page */}
+
+      <Route  path='*' element={<PageNotFound/>}/>
+      
       </Routes>
     </div>
   );
