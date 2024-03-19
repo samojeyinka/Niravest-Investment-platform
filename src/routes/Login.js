@@ -43,15 +43,12 @@ const Login = () => {
          
           const response = await axios.post(`${url}/login`,{"user":formData})
       
-          
-              console.log(response,'Sign in successfully!!');
              
               const token = response.headers.get("Authorization");
-              console.log(token)
               Cookies.set('token', token);
               const userId = response.data.data.id;
               Cookies.set('userId', userId);
-              console.log(userId)
+  
               navigate(`/overview`);
 
       } catch (error) {

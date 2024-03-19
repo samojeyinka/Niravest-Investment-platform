@@ -37,7 +37,6 @@ const Packages = () => {
 
       setPackages(packages);
 
-      console.log(response.data)
     } catch (error) {
       console.log(error);
     }
@@ -55,9 +54,8 @@ const Packages = () => {
   const handleAddPackage = async (packageId, packagePrice) => {
     if (parseFloat(balance) < parseFloat(packagePrice)) {
       alert("Insufficient balance,please topup your account balance")
-      console.log("Insufficient balance");
+    
     } else if (activatedPackages.includes(packageId)) {
-      console.log("Package already activated");
       alert("Package already activated");
     } else {
       try {
@@ -122,7 +120,7 @@ const Packages = () => {
 
   const activePackages = JSON.parse(localStorage.getItem('activatedPackages')) || [];
   activePackages.forEach((pack) => {
-    console.log(pack)
+   
   });
 
 

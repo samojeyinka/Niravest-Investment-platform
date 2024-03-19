@@ -59,7 +59,6 @@ useEffect(() => {
         let handler = (e) => {
             if (dropdown.current && !dropdown.current.contains(e.target)) {
                 setOpen(false);
-                console.log(dropdown.current);
             }
         };
     

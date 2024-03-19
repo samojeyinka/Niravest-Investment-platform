@@ -23,7 +23,7 @@ const Package = () => {
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
-    console.log(id)
+
 
     const isLoggedIn = Cookies.get('token');
     const userId = Cookies.get('userId');
@@ -51,8 +51,6 @@ const Package = () => {
             setDailyProfits(daily_profits);
             setDuration(duration);
 
-            console.log(name, duration);
-            console.log(details);
 
 
         } catch (error) {
