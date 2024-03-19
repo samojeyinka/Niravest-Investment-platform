@@ -46,7 +46,7 @@ function App() {
       
       {/* 404 page */}
 
-      <Route  path='*' element={<PageNotFound/>}/>
+      {/* <Route  path='*' element={<PageNotFound/>}/> */}
       
       </Routes>
     </div>
