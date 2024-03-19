@@ -20,7 +20,7 @@ const Users = () => {
       setGetUsers(allUsers);
 
     } catch (error) {
-      alert("Something went wrong");
+      console.log(error);
     }
   }
 
@@ -30,6 +30,7 @@ const Users = () => {
       alert("User successfully deleted");
       showUsers();
     } catch (error) {
+      console.log(error);
       alert("Unable to delete user");
     }
   }

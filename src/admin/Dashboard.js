@@ -33,8 +33,9 @@ const Dashboard = () => {
 
       setPackages(packages);
 
+     
     } catch (error) {
-      alert("Something went wrong");
+      console.log(error);
     }
   }
 
@@ -58,6 +59,7 @@ const Dashboard = () => {
       alert(`Successfully deleted ${packageId}`)
     } catch (error) {
       alert("Unable to delete package")
+      console.log(error)
     }
   }
 

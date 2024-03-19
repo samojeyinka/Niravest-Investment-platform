@@ -20,7 +20,7 @@ useEffect(() => {
         const packages = response.data
         setPackages(packages);
       } catch (error) {
-        alert("Something went wrong");
+        console.log(error);
       }
     }
 

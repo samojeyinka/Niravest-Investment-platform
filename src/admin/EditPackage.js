@@ -45,7 +45,7 @@ const EditPackage = () => {
       setNewIsActive(active);
 
     } catch (error) {
-      alert("Something went wrong");
+      console.log(error);
     }
   }
 
@@ -75,6 +75,7 @@ const EditPackage = () => {
       alert('Package successfully updated');
       navigate("/admin/dashboard");
     } catch (error) {
+      console.error(error);
       alert('Unable to update package');
     }
   }

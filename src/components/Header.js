@@ -29,7 +29,7 @@ useEffect(() => {
           const packages = response.data
           setPackages(packages);
         } catch (error) {
-            alert("Something went wrong");
+          console.log(error);
         }
       }
 
@@ -59,7 +59,7 @@ useEffect(() => {
         let handler = (e) => {
             if (dropdown.current && !dropdown.current.contains(e.target)) {
                 setOpen(false);
-               
+                console.log(dropdown.current);
             }
         };
     

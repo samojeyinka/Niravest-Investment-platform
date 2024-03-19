@@ -37,8 +37,9 @@ const Packages = () => {
 
       setPackages(packages);
 
+      console.log(response.data)
     } catch (error) {
-      alert("Something went wrong");
+      console.log(error);
     }
   }
 
@@ -54,9 +55,9 @@ const Packages = () => {
   const handleAddPackage = async (packageId, packagePrice) => {
     if (parseFloat(balance) < parseFloat(packagePrice)) {
       alert("Insufficient balance,please topup your account balance")
-      
+      console.log("Insufficient balance");
     } else if (activatedPackages.includes(packageId)) {
-     
+      console.log("Package already activated");
       alert("Package already activated");
     } else {
       try {
@@ -92,6 +93,7 @@ const Packages = () => {
 
       } catch (error) {
         alert('Package is not available for investing')
+        console.error('Error adding package oops!: ', error);
       }
     }
   }
@@ -120,6 +122,7 @@ const Packages = () => {
 
   const activePackages = JSON.parse(localStorage.getItem('activatedPackages')) || [];
   activePackages.forEach((pack) => {
+    console.log(pack)
   });
 
 

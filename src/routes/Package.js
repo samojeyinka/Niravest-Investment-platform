@@ -156,7 +156,7 @@ const Package = () => {
             navigate("/overview");
 
         } catch (err) {
-            alert("Something went wrong");
+            console.error(err);
         }
     }
 
