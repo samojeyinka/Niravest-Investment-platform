@@ -55,7 +55,6 @@ const Login = () => {
               navigate(`/overview`);
 
       } catch (error) {
-          console.error(error);   
           alert("Wrong login credentials, please try again")
       }
 

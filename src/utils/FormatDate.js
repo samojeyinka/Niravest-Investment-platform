@@ -7,7 +7,7 @@ const FormatDate = (dateString) => {
       }
       return new Intl.DateTimeFormat('en-US', options).format(date);
     } catch (error) {
-      console.error(error);
+      alert("Something went wrong");
       return 'Error formatting date';
     }
   };

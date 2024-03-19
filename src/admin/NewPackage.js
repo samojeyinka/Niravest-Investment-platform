@@ -47,7 +47,6 @@ const NewPackage = () => {
       navigate("/admin/dashboard");
       alert('Package successfully created');
     } catch (error) {
-      console.error(error);
       alert('Unable to create package');
     }
   }
