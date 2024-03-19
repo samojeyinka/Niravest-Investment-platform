@@ -60,10 +60,13 @@
 .auth__input_box input {
     width: 100%;
     padding: .8rem 0;
-    background: inherit;
-    color: var(--tertiary-color);
-
+    background: none;
+    color: var(--tertiary-color) !important;  
 }
+
+
+
+
 
 .auth__icon {
     color: var(--secondary-color);

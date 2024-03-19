@@ -38,6 +38,8 @@ a {
 input {
   border: none;
   outline: none;
+  -webkit-text-fill-color: #ffffffee;
+  Box-shadow: 0 0 0 40px var(--primary-color) inset ! important ;
 }
 
 .App {
