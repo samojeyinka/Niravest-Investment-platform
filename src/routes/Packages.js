@@ -20,7 +20,7 @@ const Packages = () => {
   const isLoggedIn = Cookies.get('token');
   const userId = Cookies.get('userId');
   const balance = localStorage.getItem('amount');
-  console.log(balance);
+
 
   const url = process.env.REACT_APP_URL;
 
@@ -37,9 +37,8 @@ const Packages = () => {
 
       setPackages(packages);
 
-      console.log(response.data)
     } catch (error) {
-      console.log(error);
+      alert("Something went wrong");
     }
   }
 
@@ -55,9 +54,9 @@ const Packages = () => {
   const handleAddPackage = async (packageId, packagePrice) => {
     if (parseFloat(balance) < parseFloat(packagePrice)) {
       alert("Insufficient balance,please topup your account balance")
-      console.log("Insufficient balance");
+      
     } else if (activatedPackages.includes(packageId)) {
-      console.log("Package already activated");
+     
       alert("Package already activated");
     } else {
       try {
@@ -93,7 +92,6 @@ const Packages = () => {
 
       } catch (error) {
         alert('Package is not available for investing')
-        console.error('Error adding package oops!: ', error);
       }
     }
   }
@@ -122,7 +120,6 @@ const Packages = () => {
 
   const activePackages = JSON.parse(localStorage.getItem('activatedPackages')) || [];
   activePackages.forEach((pack) => {
-    console.log(pack)
   });
 
 

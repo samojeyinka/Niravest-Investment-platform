@@ -19,9 +19,8 @@ useEffect(() => {
   
         const packages = response.data
         setPackages(packages);
-        console.log(response.data)
       } catch (error) {
-        console.log(error);
+        alert("Something went wrong");
       }
     }
 

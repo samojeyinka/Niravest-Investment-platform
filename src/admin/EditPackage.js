@@ -36,7 +36,7 @@ const EditPackage = () => {
           Authorization: `${token}`
         }
       })
-      console.log("gba", name);
+     
       setNewPName(name);
       setNewPPrice(price);
       setNewTotalProfits(total_profits);
@@ -45,7 +45,7 @@ const EditPackage = () => {
       setNewIsActive(active);
 
     } catch (error) {
-      console.log(error);
+      alert("Something went wrong");
     }
   }
 
@@ -75,7 +75,6 @@ const EditPackage = () => {
       alert('Package successfully updated');
       navigate("/admin/dashboard");
     } catch (error) {
-      console.error(error);
       alert('Unable to update package');
     }
   }

@@ -54,7 +54,6 @@ const Login = () => {
 
 
         const adminToken = response.headers.get("Authorization");
-        console.log(adminToken)
         Cookies.set('adminToken', adminToken);
         const adminEmail = response.data.data.email;
         Cookies.set('adminEmail', adminEmail);
@@ -65,8 +64,7 @@ const Login = () => {
       }
 
     } catch (error) {
-
-      console.error(error);
+      alert("Something went wrong");
     }
 
   }

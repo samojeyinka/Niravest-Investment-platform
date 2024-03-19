@@ -15,12 +15,12 @@ const Users = () => {
     try {
       const response = await axios.get(`${url}/users`);
       const allUsers = response.data
-      console.log("all users", allUsers);
+      
 
       setGetUsers(allUsers);
 
     } catch (error) {
-      console.log(error);
+      alert("Something went wrong");
     }
   }
 
@@ -30,7 +30,6 @@ const Users = () => {
       alert("User successfully deleted");
       showUsers();
     } catch (error) {
-      console.log(error);
       alert("Unable to delete user");
     }
   }

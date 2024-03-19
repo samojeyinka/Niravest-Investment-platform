@@ -38,7 +38,7 @@ const PaystackDepositForm = () => {
                     const newBalance = currentBalance + parseFloat(amount);
                     localStorage.setItem(`amount`, newBalance);
                     localStorage.setItem("email", email);
-                    console.log(transaction);
+                 
 
                 },
                 onCancel(){

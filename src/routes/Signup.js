@@ -42,19 +42,16 @@ const Signup = () => {
             const response = await axios.post(`${url}/signup`, { "user": formData })
 
             if (response.status === 200) {
-                console.log('Sign up successful!!');
-                console.log(response)
+                alert('Sign up successful!!');
                 const token = response.headers.get("Authorization");
-                console.log(token)
                 Cookies.set('token', token);
                 const userId = response.data.data.id;
                 Cookies.set('userId', userId);
-                console.log(userId)
                 navigate(`/overview`);
 
             }
         } catch (error) {
-            console.error(error);
+            alert("Something went wrong");
         }
 
 
