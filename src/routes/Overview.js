@@ -19,17 +19,17 @@ const Overview = () => {
   const navigate = useNavigate();
 
 
-
   const isLoggedIn = Cookies.get('token');
   const userId = Cookies.get('userId');
   const balance = localStorage.getItem('amount');
   const recentDeposit = localStorage.getItem('recentDeposit');
 
+  const url = process.env.REACT_APP_URL;
 
   const showPackages = async () => {
     try {
       const token = Cookies.get('token');
-      const response = await axios.get(`http://localhost:3000/users/${userId}/packages/active`, {
+      const response = await axios.get(`${url}/users/${userId}/packages/active`, {
         headers: {
           Authorization: `${token}`
         }
@@ -57,34 +57,10 @@ const Overview = () => {
   }
 
 
-  const handleRemovePackage = async (packageId) => {
-    try {
-      const token = Cookies.get('token');
-      await axios.delete(`http://localhost:3000/users/${userId}/packages/${packageId}`,
-        {
-          headers: {
-            Authorization: `${token}`
-          }
-        })
-
-      console.log('Package removed successfully');
-      showPackages();
-
-    } catch (error) {
-      console.error('Error removing package: ', error);
-    }
-
-  }
-
-
-
 
   const packagePage = (currentPackageId) => {
     navigate(`/package?id=${currentPackageId}`);
   }
-
-
-
 
 
   useEffect(() => {

@@ -1,7 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './routes/Home.js';
 import { useState,useEffect } from 'react';
 import Signup from './routes/Signup.js';
@@ -11,7 +10,6 @@ import Cookies from 'js-cookie';
 import Payment from './routes/Payment.js'
 import Packages from './routes/Packages.js';
 import Account from './routes/Account.js';
-import PayForm from './components/PayForm.js';
 import PaystackDepositForm from './components/PayForm.js';
 import Package from './routes/Package.js';
 import Services from './routes/Services.js';

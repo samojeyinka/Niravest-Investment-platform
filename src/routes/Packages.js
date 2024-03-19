@@ -22,10 +22,12 @@ const Packages = () => {
   const balance = localStorage.getItem('amount');
   console.log(balance);
 
+  const url = process.env.REACT_APP_URL;
+
   const showPackages = async () => {
     try {
       const token = Cookies.get('token');
-      const response = await axios.get(`http://localhost:3000/packages/`, {
+      const response = await axios.get(`${url}/packages/`, {
         headers: {
           Authorization: `${token}`
         }
@@ -60,13 +62,14 @@ const Packages = () => {
     } else {
       try {
         const token = Cookies.get('token');
-        await axios.post(`http://localhost:3000/users/${userId}/packages`, { package_id: packageId },
+        await axios.post(`${url}/users/${userId}/packages`, { package_id: packageId },
           {
             headers: {
               Authorization: `${token}`
             }
           });
-        console.log('Package added successfully');
+          alert('Package added successfully');
+       
 
         // Deduct package price from balance
         const newBalance = parseFloat(balance) - parseFloat(packagePrice);
@@ -89,6 +92,7 @@ const Packages = () => {
         setPackages(updatedPackages);
 
       } catch (error) {
+        alert('Package is not available for investing')
         console.error('Error adding package oops!: ', error);
       }
     }

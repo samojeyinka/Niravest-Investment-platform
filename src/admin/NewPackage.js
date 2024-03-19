@@ -19,11 +19,13 @@ const NewPackage = () => {
 
   const navigate = useNavigate();
 
+  const url = process.env.REACT_APP_URL;
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
       const token = Cookies.get('adminToken');
-      const post = await axios.post("http://localhost:3000/packages/", {
+      const post = await axios.post(`${url}/packages/`, {
         name: pName,
         price: pPrice,
         total_profits: totalProfits,

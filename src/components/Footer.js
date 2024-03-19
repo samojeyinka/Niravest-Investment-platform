@@ -10,11 +10,12 @@ import axios from 'axios';
 const Footer = () => {
 
   const [packages, setPackages] = useState([]);
+  const url = process.env.REACT_APP_URL;
 
 useEffect(() => {
   const showPackages = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/package-list`);
+        const response = await axios.get(`${url}/package-list`);
   
         const packages = response.data
         setPackages(packages);

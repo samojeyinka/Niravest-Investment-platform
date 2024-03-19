@@ -9,6 +9,7 @@ import Unauthorized from '../utils/Unauthorized';
 import '../stylesheets/user/Payment.css'
 
 const Payment = () => {
+  
   const isLoggedIn = Cookies.get('token');
   const balance = localStorage.getItem('amount');
   const recentDeposit = localStorage.getItem('recentDeposit');

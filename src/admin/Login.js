@@ -9,6 +9,8 @@ const Login = () => {
   const [isValid, setIsValid] = useState();
   const navigate = useNavigate();
 
+  const url = process.env.REACT_APP_URL;
+
 
 
   const [formData, setFormData] = useState({
@@ -47,8 +49,8 @@ const Login = () => {
       const email = document.getElementById('email');
       const password = document.getElementById('password');
 
-      if (email.value == "sam@gmail.com" && password.value == "password") {
-        const response = await axios.post("http://localhost:3000/login", { "user": formData })
+      if (email.value == process.env.REACT_APP_ADMIN_EMAIL && password.value == process.env.REACT_APP_ADMIN_PASSWORD) {
+        const response = await axios.post(`${url}/login`, { "user": formData })
 
 
         const adminToken = response.headers.get("Authorization");

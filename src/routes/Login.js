@@ -12,6 +12,8 @@ const Login = () => {
   const navigate = useNavigate()
   const [showPasssword, setShowPassword] = useState(false);
   const [isValid, setIsValid] = useState();
+
+  
   
   const [formData, setFormData] = useState({
       email: '',
@@ -32,11 +34,14 @@ const Login = () => {
   }
 
 
+  const url = process.env.REACT_APP_URL;
+ 
+
   const handleSubmit = async(e) => {
-    e.preventDefault()
+    e.preventDefault();
       try {
          
-          const response = await axios.post("http://localhost:3000/login",{"user":formData})
+          const response = await axios.post(`${url}/login`,{"user":formData})
       
           
               console.log(response,'Sign in successfully!!');

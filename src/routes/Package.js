@@ -29,12 +29,12 @@ const Package = () => {
     const userId = Cookies.get('userId');
     const balance = localStorage.getItem('amount');
 
-
+    const url = process.env.REACT_APP_URL;
 
     const showPackage = async () => {
         try {
             const token = Cookies.get('token');
-            const response = await axios.get(`http://localhost:3000/users/${userId}/packages/${id}`, {
+            const response = await axios.get(`${url}/users/${userId}/packages/${id}`, {
                 headers: {
 
                     Authorization: `${token}`
@@ -142,7 +142,7 @@ const Package = () => {
         localStorage.setItem('amount', newBalance);
         try {
             const token = Cookies.get('token');
-            await axios.delete(`http://localhost:3000/users/${userId}/packages/${id}`,
+            await axios.delete(`${url}/users/${userId}/packages/${id}`,
                 {
                     headers: {
                         Authorization: `${token}`

@@ -13,6 +13,8 @@ const Signup = () => {
     const [showPasssword, setShowPassword] = useState(false);
     const [isValid, setIsValid] = useState();
 
+    const url = process.env.REACT_APP_URL;
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -32,10 +34,12 @@ const Signup = () => {
     }
 
 
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post("http://localhost:3000/signup", { "user": formData })
+            const response = await axios.post(`${url}/signup`, { "user": formData })
 
             if (response.status === 200) {
                 console.log('Sign up successful!!');

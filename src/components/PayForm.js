@@ -22,7 +22,7 @@ const PaystackDepositForm = () => {
             e.preventDefault();
             const paystack = new PaystackPop();
             paystack.newTransaction({
-                key: 'pk_test_ed99e88c9f3e1caf961089161641b23813a8fc41', 
+                key: process.env.REACT_APP_PAYSTACK_SECRET_KEY, 
                 amount: amount * 100,
                 email: email,
                 "currency": "NGN",

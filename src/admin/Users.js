@@ -9,9 +9,11 @@ const Users = () => {
   const adminLoggedIn = Cookies.get("adminToken");
   const [getUsers, setGetUsers] = useState([]);
 
+  const url = process.env.REACT_APP_URL;
+
   const showUsers = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/users`);
+      const response = await axios.get(`${url}/users`);
       const allUsers = response.data
       console.log("all users", allUsers);
 
@@ -24,7 +26,7 @@ const Users = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:3000/users/${userId}`);
+      await axios.delete(`${url}/users/${userId}`);
       alert("User successfully deleted");
       showUsers();
     } catch (error) {

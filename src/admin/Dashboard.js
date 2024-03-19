@@ -16,12 +16,14 @@ const Dashboard = () => {
   const [packages, setPackages] = useState([]);
 
 
+  const url = process.env.REACT_APP_URL;
+
 
   // Fetch packages from API endpoint
   const showPackages = async () => {
     try {
       const token = Cookies.get('adminToken');
-      const response = await axios.get(`http://localhost:3000/packages/`, {
+      const response = await axios.get(`${url}/packages/`, {
         headers: {
           Authorization: `${token}`
         }
@@ -48,7 +50,7 @@ const Dashboard = () => {
   const handleDeletePackage = async (packageId) => {
     try {
       const token = Cookies.get('adminToken');
-      axios.delete(`http://localhost:3000/packages/${packageId}`, {
+      axios.delete(`${url}/packages/${packageId}`, {
         headers: {
           Authorization: `${token}`
         }

@@ -19,6 +19,8 @@ const EditPackage = () => {
 
   const navigate = useNavigate();
 
+  const url = process.env.REACT_APP_URL;
+
 
   const params = new URLSearchParams(window.location.search)
   const id = params.get('id');
@@ -29,7 +31,7 @@ const EditPackage = () => {
   const getPackage = async () => {
     try {
       const token = Cookies.get('adminToken');
-      const { data: { name, price, total_profits, daily_profits, duration, active } } = await axios.get(`http://localhost:3000/packages/${id}`, {
+      const { data: { name, price, total_profits, daily_profits, duration, active } } = await axios.get(`${url}/packages/${id}`, {
         headers: {
           Authorization: `${token}`
         }
@@ -51,7 +53,7 @@ const EditPackage = () => {
     e.preventDefault();
     try {
       const token = Cookies.get('adminToken');
-      const { data: { name, price, total_profits, daily_profits, duration, active } } = await axios.patch(`http://localhost:3000/packages/${id}`, {
+      const { data: { name, price, total_profits, daily_profits, duration, active } } = await axios.patch(`${url}/packages/${id}`, {
         name: newPName,
         price: newPPrice,
         total_profits: newTotalProfits,

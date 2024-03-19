@@ -10,10 +10,12 @@ const UserNav = () => {
   const [userEmail,setUserEmail] = useState("");
   const userId = Cookies.get('userId');
 
+  const url = process.env.REACT_APP_URL;
+
   const getUserInfo = async() => {
       try {
         const token  = Cookies.get('token');
-        const response = await axios.get(`http://localhost:3000/users/${userId}/`,{
+        const response = await axios.get(`${url}/users/${userId}/`,{
             headers: {
               Authorization: `${token}`
             
